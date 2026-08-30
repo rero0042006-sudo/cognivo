@@ -29,6 +29,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -53,10 +54,10 @@ fun GameSelectionScreen(
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = 20.dp, vertical = 12.dp)
         ) {
-            ArcadeTopBar(title = "Choose Activity", onBack = onBack)
+            ArcadeTopBar(title = stringResource(com.memorymoments.app.R.string.nav_games), onBack = onBack)
 
             Text(
-                text = "Memory Activities",
+                text = stringResource(com.memorymoments.app.R.string.nav_games),
                 style = MaterialTheme.typography.headlineLarge.copy(
                     fontWeight = FontWeight.Bold,
                     fontSize = 28.sp
@@ -67,7 +68,7 @@ fun GameSelectionScreen(
             Spacer(modifier = Modifier.height(4.dp))
 
             Text(
-                text = "Select an activity to practice recognizing today:",
+                text = stringResource(com.memorymoments.app.R.string.home_subgreeting),
                 style = MaterialTheme.typography.bodyLarge.copy(fontSize = 18.sp),
                 color = colors.textMuted
             )
@@ -80,8 +81,8 @@ fun GameSelectionScreen(
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 StitchGameChoiceCard(
-                    title = "Who's Who?",
-                    subtitle = "Practice recognizing your family members and loved ones.",
+                    title = stringResource(com.memorymoments.app.R.string.game_whos_who_title),
+                    subtitle = stringResource(com.memorymoments.app.R.string.family_subtitle),
                     icon = Icons.Filled.PhotoLibrary,
                     iconBg = colors.primaryContainer,
                     iconTint = colors.onPrimaryContainer,
@@ -89,8 +90,8 @@ fun GameSelectionScreen(
                 )
 
                 StitchGameChoiceCard(
-                    title = "Where Was It?",
-                    subtitle = "Recognize familiar places from your hometown & travels.",
+                    title = stringResource(com.memorymoments.app.R.string.game_places_title),
+                    subtitle = stringResource(com.memorymoments.app.R.string.heritage_explore_subtitle),
                     icon = Icons.Filled.Place,
                     iconBg = colors.tertiaryContainer,
                     iconTint = colors.text,
@@ -98,8 +99,8 @@ fun GameSelectionScreen(
                 )
 
                 StitchGameChoiceCard(
-                    title = "Name That Tune",
-                    subtitle = "Listen to familiar melodies and identify your favorite songs.",
+                    title = stringResource(com.memorymoments.app.R.string.game_music_title),
+                    subtitle = stringResource(com.memorymoments.app.R.string.game_music_listen),
                     icon = Icons.Filled.MusicNote,
                     iconBg = colors.secondaryContainer,
                     iconTint = colors.onSecondaryContainer,

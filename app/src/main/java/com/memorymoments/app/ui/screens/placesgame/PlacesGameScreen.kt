@@ -217,12 +217,12 @@ private fun PlacesPlayingContent(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            text = "Round ${state.roundNumber} of ${state.totalRounds}",
+            text = stringResource(R.string.game_round_counter, state.roundNumber, state.totalRounds),
             style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
             color = colors.primary
         )
         Text(
-            text = "Score: ${state.stars} ⭐",
+            text = stringResource(R.string.stars_label, state.stars),
             style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
             color = colors.secondary
         )

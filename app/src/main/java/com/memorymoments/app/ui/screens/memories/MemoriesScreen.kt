@@ -48,10 +48,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.memorymoments.app.R
 import com.memorymoments.app.model.Memory
 import com.memorymoments.app.ui.components.ArcadeScreen
 import com.memorymoments.app.ui.components.ArcadeTopBar
@@ -81,10 +83,10 @@ fun MemoriesScreen(
                 .fillMaxSize()
                 .padding(horizontal = 20.dp, vertical = 12.dp)
         ) {
-            ArcadeTopBar(title = "My Memories", onBack = onBack)
+            ArcadeTopBar(title = stringResource(R.string.nav_memories), onBack = onBack)
 
             Text(
-                text = "My Memories",
+                text = stringResource(R.string.nav_memories),
                 style = MaterialTheme.typography.headlineLarge.copy(
                     fontWeight = FontWeight.Bold,
                     fontSize = 28.sp
@@ -95,7 +97,7 @@ fun MemoriesScreen(
             Spacer(modifier = Modifier.height(4.dp))
 
             Text(
-                text = "Special life stories, milestones, and moments:",
+                text = stringResource(R.string.heritage_explore_subtitle),
                 style = MaterialTheme.typography.bodyLarge.copy(fontSize = 17.sp),
                 color = colors.textMuted
             )
@@ -108,7 +110,7 @@ fun MemoriesScreen(
                 horizontalArrangement = Arrangement.spacedBy(10.dp)
             ) {
                 RetroButton(
-                    text = "ADD MEMORY",
+                    text = stringResource(R.string.home_view_memory),
                     icon = Icons.Filled.Add,
                     onClick = onAddMemory,
                     style = RetroButtonStyle.Primary,
@@ -117,7 +119,7 @@ fun MemoriesScreen(
                 )
 
                 RetroButton(
-                    text = "MY LIFE",
+                    text = stringResource(R.string.heritage_our_roots),
                     icon = Icons.Filled.Timeline,
                     onClick = onOpenTimeline,
                     style = RetroButtonStyle.Secondary,
@@ -160,9 +162,9 @@ fun MemoriesScreen(
 
     deletingMemoryId?.let { id ->
         RetroConfirmDialog(
-            title = "DELETE THIS MEMORY?",
-            message = "This will remove \"${deletingMemoryTitle ?: "this memory"}\". Stored family members, places, and songs will NOT be removed.",
-            confirmLabel = "DELETE",
+            title = stringResource(R.string.family_delete_title, deletingMemoryTitle ?: ""),
+            message = stringResource(R.string.family_delete_message, deletingMemoryTitle ?: ""),
+            confirmLabel = stringResource(R.string.btn_delete),
             onConfirm = {
                 viewModel.deleteMemory(id)
                 deletingMemoryId = null

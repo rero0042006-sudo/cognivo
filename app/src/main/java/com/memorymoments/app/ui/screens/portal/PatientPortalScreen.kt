@@ -768,7 +768,7 @@ private fun PatientProfileTab(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "PATIENT PROFILE",
+                    text = androidx.compose.ui.res.stringResource(com.memorymoments.app.R.string.profile_title).uppercase(),
                     style = MmTheme.arcade.titleSmall,
                     color = colors.reward,
                     modifier = Modifier.semantics { heading() }
@@ -782,7 +782,7 @@ private fun PatientProfileTab(
                     border = BorderStroke(1.dp, colors.reward)
                 ) {
                     Text(
-                        text = "✏️ EDIT PROFILE",
+                        text = "✏️ " + androidx.compose.ui.res.stringResource(com.memorymoments.app.R.string.profile_info),
                         style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
                         color = colors.reward,
                         modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp)
@@ -815,11 +815,11 @@ private fun PatientProfileTab(
 
                     HorizontalDivider(color = colors.border, modifier = Modifier.padding(vertical = 4.dp))
 
-                    ProfileFieldRow(label = "Age", value = if (profile.age.isNotBlank()) "${profile.age} years old" else "Not set")
-                    ProfileFieldRow(label = "Date of Birth", value = profile.dateOfBirth.ifBlank { "Not set" })
-                    ProfileFieldRow(label = "Gender", value = profile.gender.ifBlank { "Female" })
-                    ProfileFieldRow(label = "Contact Info", value = profile.contactInfo.ifBlank { userIdentifier })
-                    ProfileFieldRow(label = "Language Preference", value = profile.language.ifBlank { "English" })
+                    ProfileFieldRow(label = androidx.compose.ui.res.stringResource(com.memorymoments.app.R.string.profile_info), value = if (profile.age.isNotBlank()) "${profile.age} years old" else "Not set")
+                    ProfileFieldRow(label = androidx.compose.ui.res.stringResource(com.memorymoments.app.R.string.profile_info), value = profile.dateOfBirth.ifBlank { "Not set" })
+                    ProfileFieldRow(label = androidx.compose.ui.res.stringResource(com.memorymoments.app.R.string.profile_info), value = profile.gender.ifBlank { "Female" })
+                    ProfileFieldRow(label = androidx.compose.ui.res.stringResource(com.memorymoments.app.R.string.profile_info), value = profile.contactInfo.ifBlank { userIdentifier })
+                    ProfileFieldRow(label = androidx.compose.ui.res.stringResource(com.memorymoments.app.R.string.profile_language_pref), value = profile.language.ifBlank { "English" })
                 }
             }
 
@@ -832,7 +832,7 @@ private fun PatientProfileTab(
             ) {
                 Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     Text(
-                        text = "DIAGNOSED CONDITIONS / DISEASES",
+                        text = androidx.compose.ui.res.stringResource(com.memorymoments.app.R.string.profile_info).uppercase(),
                         style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                         color = colors.secondary
                     )
@@ -881,7 +881,7 @@ private fun PatientProfileTab(
                         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                             Icon(imageVector = Icons.Filled.ContactPhone, contentDescription = null, tint = colors.primary)
                             Text(
-                                text = "EMERGENCY CONTACT",
+                                text = androidx.compose.ui.res.stringResource(com.memorymoments.app.R.string.profile_emergency_contact),
                                 style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                                 color = colors.primary
                             )

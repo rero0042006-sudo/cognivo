@@ -177,12 +177,12 @@ fun MusicGameScreen(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(
-                            text = "Round ${currentState.roundNumber} of ${currentState.totalRounds}",
+                            text = stringResource(R.string.game_round_counter, currentState.roundNumber, currentState.totalRounds),
                             style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                             color = colors.primary
                         )
                         Text(
-                            text = "Score: ${currentState.stars} ⭐",
+                            text = stringResource(R.string.stars_label, currentState.stars),
                             style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                             color = colors.secondary
                         )
@@ -224,7 +224,7 @@ fun MusicGameScreen(
 
                             Column(modifier = Modifier.weight(1f)) {
                                 Text(
-                                    text = if (isAudioPlaying) "PLAYING SONG..." else "TAP TO HEAR SONG",
+                                    text = if (isAudioPlaying) stringResource(R.string.game_music_stop) else stringResource(R.string.game_music_play),
                                     style = MaterialTheme.typography.titleLarge.copy(
                                         fontWeight = FontWeight.Bold,
                                         fontSize = 19.sp
