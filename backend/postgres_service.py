@@ -112,15 +112,8 @@ class PostgresService:
             domain_scores[domain].append(score_val)
             last_game = domain
 
-        # Construct 6-slot recent history arrays (-1.0 for unpopulated slots)
-        def get_recent_6_slots(scores: List[float]) -> List[float]:
-            slots = [-1.0] * 6
-            recent = scores[-6:] if len(scores) >= 6 else scores
-            for i, s in enumerate(recent):
-                slots[i] = round(float(s), 2)
-            return slots
-
-        raw_input = {
+        # Construct 6-slot recent history per domain (-1.0 for unpopulated slots)
+        raw_input: Dict[str, Any] = {
             "patient_id": patient_id,
             "age": patient_age,
             "initial_memory": initial_memory,
@@ -130,12 +123,15 @@ class PostgresService:
             "initial_pattern": initial_pattern,
             "last_game": last_game,
             "sessions_completed": sessions_completed,
-            "memory_scores": get_recent_6_slots(domain_scores["memory"]),
-            "attention_scores": get_recent_6_slots(domain_scores["attention"]),
-            "recognition_scores": get_recent_6_slots(domain_scores["recognition"]),
-            "routine_scores": get_recent_6_slots(domain_scores["routine"]),
-            "pattern_scores": get_recent_6_slots(domain_scores["pattern"]),
         }
+
+        domains = ["memory", "attention", "recognition", "routine", "pattern"]
+        for d in domains:
+            scores = domain_scores[d]
+            recent = scores[-6:] if len(scores) >= 6 else scores
+            padded = recent + [-1.0] * (6 - len(recent))
+            for slot_idx in range(1, 7):
+                raw_input[f"{d}_score_{slot_idx}"] = round(float(padded[slot_idx - 1]), 2)
 
         return raw_input
 

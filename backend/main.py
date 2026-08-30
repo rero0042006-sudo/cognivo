@@ -116,7 +116,7 @@ async def predict_next_game_for_patient(
                     patient_id=patient_id,
                     user_token=token
                 )
-                if pg_input and pg_input.get("sessions_completed", 0) > 0:
+                if pg_input is not None:
                     raw_input = pg_input
             except Exception as e:
                 logger.warning(f"Error querying Neon PostgreSQL: {e}")
