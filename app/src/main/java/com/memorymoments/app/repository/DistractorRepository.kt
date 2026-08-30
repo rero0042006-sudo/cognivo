@@ -46,12 +46,14 @@ class DistractorRepository(context: Context) {
 
     // ── Easy / Medium Pool (unchanged behavior) ──────────────────────
 
-    suspend fun cachedPool(style: DistractorStyle, includeDemo: Boolean = true): List<DistractorCharacter> {
+    suspend fun cachedPool(style: DistractorStyle, includeDemo: Boolean = false): List<DistractorCharacter> {
         return loadAll()
             .filter {
                 it.difficulty == style &&
                     it.sourceFamilyMemberId == null &&
+                    !it.imageUri.contains("demo-") &&
                     File(it.imageUri).exists() &&
+                    File(it.imageUri).length() > 0L &&
                     (includeDemo || it.source == DistractorCharacter.Source.CLOUDFLARE)
             }
             .sortedBy { it.generatedAt }
@@ -169,9 +171,10 @@ class DistractorRepository(context: Context) {
     suspend fun cachedHardPool(familyMemberId: String): List<DistractorCharacter> {
         return loadAll()
             .filter {
-                it.difficulty == DistractorStyle.CHALLENGE &&
-                    it.sourceFamilyMemberId == familyMemberId &&
-                    File(it.imageUri).exists()
+                it.sourceFamilyMemberId == familyMemberId &&
+                    !it.imageUri.contains("demo-") &&
+                    File(it.imageUri).exists() &&
+                    File(it.imageUri).length() > 0L
             }
             .sortedBy { it.generatedAt }
     }

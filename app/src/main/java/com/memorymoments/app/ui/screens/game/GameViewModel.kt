@@ -178,8 +178,7 @@ class GameViewModel(
             val distractors = if (!isDemo) {
                 loadHardDistractors(familyMembers)
             } else {
-                val pool = distractorRepo.cachedPool(style, includeDemo = true)
-                if (pool.isEmpty()) distractorRepo.createDemoPool(style) else pool
+                distractorRepo.cachedPool(style, includeDemo = false)
             }
 
             val engine = GameEngine(
@@ -280,11 +279,11 @@ class GameViewModel(
         }
         if (allHard.isNotEmpty()) return allHard
 
-        // Fall back to generic pool
-        val generic = distractorRepo.cachedPool(style, includeDemo = true)
+        // Fall back to generic Cloudflare AI pool (excluding demo silhouettes)
+        val generic = distractorRepo.cachedPool(style, includeDemo = false)
         if (generic.isNotEmpty()) return generic
 
-        return distractorRepo.createDemoPool(style)
+        return emptyList()
     }
 
     private fun enrichQuestionsWithGroq(familyMembers: List<FamilyMember>) {

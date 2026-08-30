@@ -12,24 +12,48 @@ object GameOptionFactory {
         distractors: List<DistractorCharacter>,
         optionCount: Int = 4
     ): List<GameCharacter> {
-        val others = family.filter { it.id != target.id }.shuffled()
-        val needed = (optionCount - 1).coerceAtLeast(0)
-        val initialExtraFamily = others.take((needed / 2).coerceAtMost(others.size))
-        val neededDistractors = needed - initialExtraFamily.size
-        val fakePeople = distractors.shuffled().take(neededDistractors)
-        val stillNeeded = needed - (initialExtraFamily.size + fakePeople.size)
-        val additionalFamily = if (stillNeeded > 0) {
-            others.drop(initialExtraFamily.size).take(stillNeeded)
-        } else {
-            emptyList()
-        }
-        val allExtraFamily = initialExtraFamily + additionalFamily
+        val usedUris = mutableSetOf<String>()
+        val result = mutableListOf<GameCharacter>()
 
-        return (
-            listOf(GameCharacter.RealFamilyMember(target)) +
-                allExtraFamily.map { GameCharacter.RealFamilyMember(it) } +
-                fakePeople.map { GameCharacter.AiDistractor(it) }
-            ).shuffled()
+        // 1. Correct answer target
+        val targetChar = GameCharacter.RealFamilyMember(target)
+        result.add(targetChar)
+        usedUris.add(targetChar.imageUri)
+
+        // 2. Filter valid distractors (must have valid image files/URIs and not match target imageUri)
+        val validDistractors = distractors.filter { d ->
+            d.imageUri.isNotBlank() && !d.imageUri.contains("demo-") && d.imageUri !in usedUris &&
+                (java.io.File(d.imageUri).exists() && java.io.File(d.imageUri).length() > 0)
+        }.shuffled()
+
+        // 3. Other family members with valid photo URIs
+        val otherFamily = family.filter { f ->
+            val photoUri = f.originalPhotoUri
+            f.id != target.id && !photoUri.isNullOrBlank() && photoUri !in usedUris &&
+                (java.io.File(photoUri).exists() && java.io.File(photoUri).length() > 0)
+        }.shuffled()
+
+        val needed = optionCount - 1
+
+        // Combine available valid candidates
+        val candidates = mutableListOf<GameCharacter>()
+        for (d in validDistractors) {
+            candidates.add(GameCharacter.AiDistractor(d))
+        }
+        for (f in otherFamily) {
+            candidates.add(GameCharacter.RealFamilyMember(f))
+        }
+
+        // Shuffle candidates and pick needed count without URI duplicates
+        for (candidate in candidates.shuffled()) {
+            if (result.size >= optionCount) break
+            if (candidate.imageUri !in usedUris) {
+                result.add(candidate)
+                usedUris.add(candidate.imageUri)
+            }
+        }
+
+        return result.shuffled()
     }
 
     fun toAnswerOptions(
