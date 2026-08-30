@@ -9,9 +9,9 @@ import com.memorymoments.app.model.Song
 import com.memorymoments.app.repository.AppStateRepository
 import com.memorymoments.app.repository.DailyCompanionData
 import com.memorymoments.app.repository.DailyCompanionRepository
-import com.memorymoments.app.repository.DomainGameMapper
+import com.memorymoments.app.navigation.Routes
+import com.memorymoments.app.repository.AuthRepository
 import com.memorymoments.app.repository.RecommendationRepository
-import com.memorymoments.app.repository.RecommendationUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -20,15 +20,27 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
+data class RecommendationUiState(
+    val isLoading: Boolean = false,
+    val nextGameDomain: String? = null,
+    val recommendedGameTitle: String? = null,
+    val domainTag: String? = null,
+    val recommendedRoute: String? = null,
+    val error: String? = null
+)
+
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private val appStateRepo = AppStateRepository(application)
     val dailyCompanionRepo = DailyCompanionRepository(application)
     val audioPlaybackManager = AudioPlaybackManager(application)
     private val caregiverRepo = com.memorymoments.app.repository.CaregiverRepository(application)
     private val recommendationRepo = RecommendationRepository(application)
+    private val authRepo = AuthRepository(application)
 
     private val _recommendationState = MutableStateFlow(RecommendationUiState(isLoading = true))
     val recommendationState: StateFlow<RecommendationUiState> = _recommendationState.asStateFlow()
+
+    private var activePatientId: String? = null
 
     val stats: StateFlow<AppStats> = appStateRepo.stats.stateIn(
         scope = viewModelScope,
@@ -48,52 +60,54 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch {
             dailyCompanionRepo.checkAndRefreshDailyState()
         }
+
+        // Account-switching protection: Monitor active user ID. Clear & fetch fresh prediction when account changes.
         viewModelScope.launch {
-            recommendationRepo.currentPatientId.collectLatest { patientId ->
-                if (!patientId.isNullOrBlank() && patientId != "guest") {
-                    loadRecommendation(patientId)
-                } else {
-                    _recommendationState.value = RecommendationUiState(
-                        isLoading = false,
-                        recommendedDomain = "memory",
-                        recommendedGameTitle = DomainGameMapper.getGameTitle("memory"),
-                        recommendedRoute = DomainGameMapper.getGameRoute("memory"),
-                        error = null
-                    )
+            authRepo.currentUserId.collectLatest { userId ->
+                if (userId != activePatientId) {
+                    activePatientId = userId
+                    _recommendationState.value = RecommendationUiState(isLoading = true)
+                    fetchRecommendation()
                 }
             }
         }
     }
 
-    fun refreshRecommendation() {
+    fun fetchRecommendation() {
         viewModelScope.launch {
-            val patientId = recommendationRepo.currentPatientId.first()
-            loadRecommendation(patientId)
+            _recommendationState.value = _recommendationState.value.copy(isLoading = true, error = null)
+            val result = recommendationRepo.getNextGameRecommendation(activePatientId)
+            result.onSuccess { res ->
+                val (gameTitle, domainTag, route) = mapDomainToGame(res.nextGame)
+                _recommendationState.value = RecommendationUiState(
+                    isLoading = false,
+                    nextGameDomain = res.nextGame,
+                    recommendedGameTitle = gameTitle,
+                    domainTag = domainTag,
+                    recommendedRoute = route,
+                    error = null
+                )
+            }.onFailure { err ->
+                _recommendationState.value = RecommendationUiState(
+                    isLoading = false,
+                    nextGameDomain = null,
+                    recommendedGameTitle = null,
+                    domainTag = null,
+                    recommendedRoute = null,
+                    error = "Recommendation unavailable right now."
+                )
+            }
         }
     }
 
-    private suspend fun loadRecommendation(patientId: String?) {
-        _recommendationState.value = _recommendationState.value.copy(isLoading = true, error = null)
-        val result = recommendationRepo.fetchNextGameRecommendation(patientId)
-        result.onSuccess { response ->
-            val domain = response.nextGame
-            _recommendationState.value = RecommendationUiState(
-                isLoading = false,
-                recommendedDomain = domain,
-                recommendedGameTitle = DomainGameMapper.getGameTitle(domain),
-                recommendedRoute = DomainGameMapper.getGameRoute(domain),
-                sessionsCompleted = response.sessionsCompleted,
-                lastGame = response.lastGame,
-                error = null
-            )
-        }.onFailure { err ->
-            _recommendationState.value = RecommendationUiState(
-                isLoading = false,
-                recommendedDomain = "memory",
-                recommendedGameTitle = DomainGameMapper.getGameTitle("memory"),
-                recommendedRoute = DomainGameMapper.getGameRoute("memory"),
-                error = err.message ?: "Recommendation unavailable"
-            )
+    private fun mapDomainToGame(domain: String): Triple<String, String, String> {
+        return when (domain.lowercase()) {
+            "memory" -> Triple("Who's Who?", "Memory Focus", Routes.GAME)
+            "attention" -> Triple("Distractor Lab", "Attention Focus", Routes.DISTRACTOR_LAB)
+            "recognition" -> Triple("Where Was It?", "Places Recall", Routes.PLACES_GAME)
+            "routine" -> Triple("Life Timeline", "Routine Memory", Routes.TIMELINE)
+            "pattern" -> Triple("Name That Tune", "Music Pattern", Routes.MUSIC_GAME)
+            else -> Triple("Who's Who?", "Memory Focus", Routes.GAME)
         }
     }
 
@@ -106,6 +120,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
             viewModelScope.launch {
                 dailyCompanionRepo.markActivityCompleted("music")
                 caregiverRepo.recordActivityCompletion("music")
+                fetchRecommendation()
             }
         }
     }
@@ -131,6 +146,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch {
             dailyCompanionRepo.markActivityCompleted(type)
             caregiverRepo.recordActivityCompletion(type)
+            fetchRecommendation()
         }
     }
 

@@ -116,6 +116,7 @@ fun HomeScreen(
     val stats by viewModel.stats.collectAsStateWithLifecycle()
     val dailyData by viewModel.dailyCompanion.collectAsStateWithLifecycle()
     val isPlayingSong by viewModel.isPlayingSong.collectAsStateWithLifecycle()
+    val recommendationState by viewModel.recommendationState.collectAsStateWithLifecycle()
     val context = LocalContext.current
     val settingsRepo = remember { GameSettingsRepository(context) }
     val showHeritageContent by settingsRepo.showHeritageContent.collectAsStateWithLifecycle(initialValue = true)
@@ -132,6 +133,7 @@ fun HomeScreen(
             onExitPreview = onExitPreview,
             userName = userName,
             dailyData = dailyData,
+            recommendationState = recommendationState,
             isPlayingSong = isPlayingSong,
             showHeritageContent = showHeritageContent,
             onPlaySong = { viewModel.togglePlaySong(dailyData.todaySong) },
@@ -141,6 +143,7 @@ fun HomeScreen(
                 viewModel.markActivityComplete(key)
                 if (route.isNotEmpty()) onNavigateRoute(route) else onPlay()
             },
+            onNavigateRoute = onNavigateRoute,
             onPlay = onPlay,
             onFamily = onFamily,
             onPlaces = onPlaces,
@@ -155,9 +158,11 @@ fun HomeScreen(
             onExitPreview = onExitPreview,
             stats = stats,
             dailyData = dailyData,
+            recommendationState = recommendationState,
             isPlayingSong = isPlayingSong,
             showHeritageContent = showHeritageContent,
             onPlaySong = { viewModel.togglePlaySong(dailyData.todaySong) },
+            onNavigateRoute = onNavigateRoute,
             onPlay = onPlay,
             onFamily = onFamily,
             onPlaces = onPlaces,
@@ -179,12 +184,14 @@ private fun StitchHomeContent(
     onExitPreview: () -> Unit,
     userName: String,
     dailyData: DailyCompanionData,
+    recommendationState: RecommendationUiState,
     isPlayingSong: Boolean,
     showHeritageContent: Boolean,
     onPlaySong: () -> Unit,
     onNextSong: () -> Unit,
     onNextMemory: () -> Unit,
     onStartGame: (String, String) -> Unit,
+    onNavigateRoute: (String) -> Unit,
     onPlay: () -> Unit,
     onFamily: () -> Unit,
     onPlaces: () -> Unit,
@@ -412,6 +419,13 @@ private fun StitchHomeContent(
                 modifier = Modifier.fillMaxWidth(),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
+                // 0. AI MODEL 1 RECOMMENDATION CARD
+                RecommendedNextActivityCard(
+                    state = recommendationState,
+                    onNavigateRoute = onNavigateRoute,
+                    onDefaultPlay = onPlay
+                )
+
                 // 1. TODAY'S MEMORY CARD (Stitch Dashboard Spec)
                 if (dailyData.todayMemory != null) {
                     StitchMemoryCard(
@@ -1077,9 +1091,11 @@ private fun GameModeHomeScreenContent(
     onExitPreview: () -> Unit,
     stats: AppStats,
     dailyData: DailyCompanionData,
+    recommendationState: RecommendationUiState,
     isPlayingSong: Boolean,
     showHeritageContent: Boolean,
     onPlaySong: () -> Unit,
+    onNavigateRoute: (String) -> Unit,
     onPlay: () -> Unit,
     onFamily: () -> Unit,
     onPlaces: () -> Unit,
@@ -1190,6 +1206,13 @@ private fun GameModeHomeScreenContent(
 
             XpBar(current = stats.xp % XP_PLACEHOLDER_MAX, max = XP_PLACEHOLDER_MAX)
 
+            // AI Model 1 Recommendation Card
+            RecommendedNextActivityCard(
+                state = recommendationState,
+                onNavigateRoute = onNavigateRoute,
+                onDefaultPlay = onPlay
+            )
+
             // Daily Companion Card
             if (dailyData.isEnabled && dailyData.todaySong != null) {
                 RetroPanel(modifier = Modifier.fillMaxWidth()) {
@@ -1263,5 +1286,113 @@ private fun GameModeHomeScreenContent(
                 minHeight = 48.dp
             )
         }
+    }
+}
+
+/**
+ * Surface Model 1 XGBoost Recommendation Card
+ */
+@Composable
+private fun RecommendedNextActivityCard(
+    state: RecommendationUiState,
+    onNavigateRoute: (String) -> Unit,
+    onDefaultPlay: () -> Unit
+) {
+    val colors = MmTheme.colors
+
+    RetroPanel(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 4.dp),
+        borderColor = colors.primary
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(6.dp)
+                ) {
+                    Icon(
+                        imageVector = Icons.Filled.AutoAwesome,
+                        contentDescription = "AI Model 1",
+                        tint = colors.primary,
+                        modifier = Modifier.size(20.dp)
+                    )
+                    Text(
+                        text = "RECOMMENDED NEXT ACTIVITY",
+                        style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold),
+                        color = colors.primary
+                    )
+                }
+                Surface(
+                    shape = RoundedCornerShape(8.dp),
+                    color = colors.primary.copy(alpha = 0.15f)
+                ) {
+                    Text(
+                        text = "Model 1 AI",
+                        style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
+                        color = colors.primary,
+                        modifier = Modifier.padding(horizontal = 8.dp, vertical = 2.dp)
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            when {
+                state.isLoading -> {
+                    Text(
+                        text = "Calculating personalized recommendation...",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = colors.textMuted
+                    )
+                }
+                state.error != null -> {
+                    Text(
+                        text = state.error,
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = colors.error
+                    )
+                }
+                state.recommendedGameTitle != null -> {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Column(modifier = Modifier.weight(1f)) {
+                            Text(
+                                text = state.recommendedGameTitle,
+                                style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
+                                color = colors.onPrimaryContainer
+                            )
+                            if (!state.domainTag.isNullOrBlank()) {
+                                Text(
+                                    text = "Domain: ${state.domainTag}",
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = colors.textMuted
+                                )
+                            }
+                        }
+                        Spacer(modifier = Modifier.width(8.dp))
+                        RetroButton(
+                            text = "PLAY NOW",
+                            onClick = {
+                                val route = state.recommendedRoute
+                                if (!route.isNullOrBlank()) {
+                                    onNavigateRoute(route)
+                                } else {
+                                    onDefaultPlay()
+                                }
+                            },
+                            style = RetroButtonStyle.Primary,
+                            minHeight = 40.dp
+                        )
+                    }
+                }
+            }
     }
 }

@@ -6,96 +6,51 @@ import com.memorymoments.app.data.local.PreferenceKeys
 import com.memorymoments.app.data.local.appDataStore
 import com.memorymoments.app.data.remote.backend.BackendClient
 import com.memorymoments.app.data.remote.backend.NextGameRecommendationResponse
-import com.memorymoments.app.navigation.Routes
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
 /**
- * UI State for Model 1 Next-Game Recommendation.
+ * Repository responsible for fetching Model 1 next-game recommendations
+ * from the FastAPI backend (which queries Neon DB and executes XGBoost inference).
  */
-data class RecommendationUiState(
-    val isLoading: Boolean = false,
-    val recommendedDomain: String? = null,
-    val recommendedGameTitle: String? = null,
-    val recommendedRoute: String? = null,
-    val sessionsCompleted: Int = 0,
-    val lastGame: String? = null,
-    val error: String? = null
-)
+class RecommendationRepository(context: Context) {
+    private val appContext = context.applicationContext
+    private val dataStore = appContext.appDataStore
 
-/**
- * Domain-to-Game Display and Route Mapper.
- * Maps Model 1 predicted domains (memory, attention, recognition, routine, pattern)
- * to existing Cogniva games and navigation routes.
- */
-object DomainGameMapper {
-    fun getGameTitle(domain: String?): String {
-        return when (domain?.lowercase()) {
-            "memory" -> "Who's Who? (Face & Name Recall)"
-            "recognition" -> "Who's Who? (Family Recognition)"
-            "attention" -> "Where Was It? (Places Recall)"
-            "routine" -> "Where Was It? (Daily Landmarks)"
-            "pattern" -> "Name That Tune (Melody Recall)"
-            else -> "Who's Who? (Face Recognition)"
+    companion object {
+        private const val TAG = "RecommendationRepo"
+    }
+
+    suspend fun getNextGameRecommendation(overridePatientId: String? = null): Result<NextGameRecommendationResponse> {
+        val patientId = if (!overridePatientId.isNullOrBlank()) {
+            overridePatientId
+        } else {
+            dataStore.data.map { prefs ->
+                val fb = prefs[PreferenceKeys.FIREBASE_USER_ID]
+                val curr = prefs[PreferenceKeys.CURRENT_USER_ID]
+                if (!fb.isNullOrBlank()) fb else curr
+            }.first()
         }
-    }
 
-    fun getGameRoute(domain: String?): String {
-        return when (domain?.lowercase()) {
-            "memory", "recognition" -> Routes.gameSetup(demo = false)
-            "attention", "routine" -> Routes.placesGame(style = "NORMAL", demo = false)
-            "pattern" -> Routes.musicGame(style = "NORMAL", demo = false)
-            else -> Routes.gameSetup(demo = false)
-        }
-    }
-
-    fun getDomainDisplayName(domain: String?): String {
-        return when (domain?.lowercase()) {
-            "memory" -> "Memory"
-            "recognition" -> "Recognition"
-            "attention" -> "Attention"
-            "routine" -> "Routine"
-            "pattern" -> "Pattern"
-            else -> "Memory"
-        }
-    }
-}
-
-/**
- * Repository for Model 1 Next-Game Recommendations.
- * Connects directly to the existing FastAPI ML backend endpoint:
- * GET /api/patients/{patient_id}/next-game
- */
-class RecommendationRepository(private val context: Context) {
-    private val dataStore = context.appDataStore
-    private val TAG = "RecommendationRepo"
-
-    val currentPatientId: Flow<String?> = dataStore.data.map { prefs ->
-        prefs[PreferenceKeys.FIREBASE_USER_ID] ?: prefs[PreferenceKeys.CURRENT_USER_ID]
-    }
-
-    suspend fun fetchNextGameRecommendation(patientId: String?): Result<NextGameRecommendationResponse> {
-        val targetId = patientId ?: currentPatientId.first()
-        if (targetId.isNullOrBlank() || targetId == "guest") {
-            Log.w(TAG, "No valid authenticated patient ID available for recommendation.")
-            return Result.failure(IllegalStateException("No authenticated patient ID"))
+        if (patientId.isNullOrBlank() || patientId == "guest") {
+            Log.w(TAG, "No authenticated patient ID found for recommendation request.")
+            return Result.failure(IllegalStateException("No authenticated patient session"))
         }
 
         return try {
-            Log.i(TAG, "Requesting Model 1 recommendation for patient: $targetId")
-            val response = BackendClient.api.getNextGameRecommendation(targetId)
+            Log.i(TAG, "Requesting Model 1 recommendation for patient ID: $patientId")
+            val response = BackendClient.api.getNextGameRecommendation(patientId)
             if (response.isSuccessful && response.body() != null) {
-                val body = response.body()!!
-                Log.i(TAG, "Model 1 returned next_game: '${body.nextGame}' for patient: $targetId")
-                Result.success(body)
+                val recommendation = response.body()!!
+                Log.i(TAG, "Successfully received Model 1 recommendation: ${recommendation.nextGame} for patient: $patientId")
+                Result.success(recommendation)
             } else {
-                val err = "Backend returned code ${response.code()}: ${response.errorBody()?.string()}"
-                Log.e(TAG, err)
-                Result.failure(RuntimeException(err))
+                val errorMsg = "HTTP ${response.code()}: ${response.errorBody()?.string() ?: "Unknown error"}"
+                Log.e(TAG, "Failed to fetch recommendation: $errorMsg")
+                Result.failure(Exception("Recommendation request failed ($errorMsg)"))
             }
         } catch (e: Exception) {
-            Log.e(TAG, "Exception contacting Model 1 recommendation backend: ${e.message}", e)
+            Log.e(TAG, "Network or server exception during recommendation fetch: ${e.message}", e)
             Result.failure(e)
         }
     }
