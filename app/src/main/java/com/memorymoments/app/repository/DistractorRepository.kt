@@ -286,6 +286,49 @@ class DistractorRepository(context: Context) {
     }
 
     /**
+     * Generates ONE new family-member-like distractor image for a gameplay round.
+     * Preserves core facial/hair attributes while introducing clothing/setting context variation.
+     */
+    suspend fun generateSingleFamilyLikeDistractor(
+        member: FamilyMember,
+        visualProfileRepo: VisualProfileRepository
+    ): Result<DistractorCharacter> = withContext(Dispatchers.IO) {
+        if (!NetworkStatus.isOnline(appContext)) {
+            val cached = cachedHardPool(member.id)
+            return@withContext if (cached.isNotEmpty()) Result.success(cached.random()) else Result.failure(OfflineException())
+        }
+        val profile = visualProfileRepo.getOrAnalyze(member)
+            ?: return@withContext Result.failure(DistractorUnavailableException("Visual profile unavailable"))
+
+        val clothingVariations = listOf("casual sweater", "formal jacket", "outdoor coat", "vintage cardigan", "patterned shirt", "denim jacket")
+        val attrs = profile.toAttributesMap()
+        val visualAttributes = VisualAttributes(
+            ageGroup = attrs["ageGroup"] ?: "unknown",
+            hairColor = attrs["hairColor"] ?: "unknown",
+            hairStyle = attrs["hairStyle"] ?: "unknown",
+            glasses = attrs["glasses"] ?: "unknown",
+            clothing = clothingVariations.random(),
+            complexion = attrs["complexion"] ?: "unknown",
+            generalBuild = attrs["generalBuild"] ?: "unknown"
+        )
+
+        try {
+            val body = withTimeout(Constants.GENERATION_TIMEOUT_MS) {
+                api.generateDistractor(
+                    DistractorRequest(
+                        difficulty = DistractorStyle.CHALLENGE.apiDifficulty,
+                        visualAttributes = visualAttributes
+                    )
+                )
+            }
+            saveGenerated(DistractorStyle.CHALLENGE, body, sourceFamilyMemberId = member.id)
+        } catch (e: Exception) {
+            val cached = cachedHardPool(member.id)
+            if (cached.isNotEmpty()) Result.success(cached.random()) else Result.failure(e)
+        }
+    }
+
+    /**
      * Fallback for Hard mode when Groq Vision fails:
      * generate generic distractors using the standard Cloudflare pipeline.
      */

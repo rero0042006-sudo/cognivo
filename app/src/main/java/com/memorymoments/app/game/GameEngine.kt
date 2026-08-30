@@ -21,9 +21,9 @@ class GameEngine(
         val questions = mutableListOf<Question>()
         var pool = family.shuffled().toMutableList()
         val optionCount = when (style) {
-            DistractorStyle.EASY -> 2
-            DistractorStyle.NORMAL -> 4
-            DistractorStyle.CHALLENGE -> 6
+            DistractorStyle.EASY -> 4
+            DistractorStyle.NORMAL -> 7
+            DistractorStyle.CHALLENGE -> 10
         }
 
         while (questions.size < count) {

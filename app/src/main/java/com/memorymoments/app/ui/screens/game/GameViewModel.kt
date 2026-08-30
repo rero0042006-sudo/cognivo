@@ -125,6 +125,7 @@ class GameViewModel(
                 combo = currentCombo,
                 bestCombo = bestComboInSession
             )
+            generateSingleFamilyLikeImageForRound(currentRoundIndex)
         } else {
             finishGame()
         }
@@ -191,7 +192,7 @@ class GameViewModel(
                 style = style
             )
 
-            // Trigger non-blocking background enrichment of the 15-image distractor pool for family members
+            // Trigger non-blocking background enrichment of the 20-image distractor pool for family members
             if (!isDemo) {
                 viewModelScope.launch(Dispatchers.IO) {
                     val visualProfileRepo = VisualProfileRepository(getApplication())
@@ -221,10 +222,46 @@ class GameViewModel(
                     bestCombo = 0
                 )
 
+                // Asynchronously generate 1 new family-like image for the current round
+                generateSingleFamilyLikeImageForRound(0)
+
                 // Asynchronously enrich questions with Groq AI personalization in the background
                 enrichQuestionsWithGroq(familyMembers)
             } else {
                 _state.value = GameState.NotEnoughFamily
+            }
+        }
+    }
+
+    private fun generateSingleFamilyLikeImageForRound(roundIdx: Int) {
+        if (isDemo || roundIdx !in questions.indices) return
+        viewModelScope.launch(Dispatchers.IO) {
+            val q = questions[roundIdx]
+            val visualProfileRepo = VisualProfileRepository(getApplication())
+            val res = distractorRepo.generateSingleFamilyLikeDistractor(q.targetMember, visualProfileRepo)
+            res.onSuccess { newDistractor ->
+                // Insert the 1 newly generated family-like image into round options as a distractor
+                val existingOptions = q.options.toMutableList()
+                val distractorIndex = existingOptions.indexOfFirst { !it.isCorrect }
+                if (distractorIndex != -1) {
+                    existingOptions[distractorIndex] = existingOptions[distractorIndex].copy(
+                        imageUri = newDistractor.imageUri
+                    )
+                    val updatedQ = q.copy(options = existingOptions)
+                    val updatedQuestions = questions.toMutableList()
+                    updatedQuestions[roundIdx] = updatedQ
+                    questions = updatedQuestions
+
+                    if (currentRoundIndex == roundIdx) {
+                        _state.update { current ->
+                            if (current is GameState.Playing && current.roundNumber == roundIdx + 1) {
+                                current.copy(question = updatedQ)
+                            } else {
+                                current
+                            }
+                        }
+                    }
+                }
             }
         }
     }
