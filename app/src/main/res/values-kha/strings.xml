@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Memory Moments</string>
+    <string name="title_memory">KI KYNMAW</string>
+    <string name="title_moments">KI KHYNDAI</string>
+    <string name="subtitle">KYNMAW. ITHUH. IASYNLOK.</string>
+    <string name="play">IALEH</string>
+    <string name="family">IING-SEM</string>
+    <string name="settings">SETTINGS</string>
+    <string name="try_demo">KYNTAIT DEMO</string>
+    <string name="back">PHAI DIEN</string>
+    <string name="level_label">KYNDAN %1$s</string>
+    <string name="stars_label">%1$d KI KHUR-LUR</string>
+    <string name="best_combo_label">COMBO BABHA TAM %1$d</string>
+    <string name="not_a_medical_tool">Ka jingialeh hikai jingmut. Kam dei ka tiar pynshisha dawai.</string>
+    <string name="family_setup_title">Pynbeit Iing-sem</string>
+    <string name="game_setup_title">Pynbeit Jingialeh</string>
+    <string name="game_title">Jingialeh</string>
+    <string name="results_title">Kaba Mih</string>
+    <string name="settings_title">Settings</string>
+    <string name="coming_soon">Sa wan shen</string>
+
+    <!-- Navigation & Core Tabs -->
+    <string name="nav_home">Ing</string>
+    <string name="nav_games">Jingialeh</string>
+    <string name="nav_memories">Jingkynmaw</string>
+    <string name="nav_family">Iing-sem</string>
+    <string name="nav_progress">Jingkit</string>
+    <string name="nav_reminders">Jingpynkynmaw</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_more">Kiei Kiei Baroh</string>
+
+    <!-- General Buttons & Actions -->
+    <string name="btn_start">SDANG</string>
+    <string name="btn_finish">PYNDEPU</string>
+    <string name="btn_submit">TYNNAI</string>
+    <string name="btn_save">KYNTIEW</string>
+    <string name="btn_cancel">PYNDUH</string>
+    <string name="btn_next">KABA BUD</string>
+    <string name="btn_play_now">IALEH MYNTA</string>
+    <string name="btn_retry">TYNJUH BIANG</string>
+
+    <!-- Home Dashboard -->
+    <string name="home_greeting_morning">Khublei Step, %1$s</string>
+    <string name="home_greeting_afternoon">Khublei Sngi, %1$s</string>
+    <string name="home_greeting_evening">Khublei Janmiet, %1$s</string>
+    <string name="home_greeting_default">Khublei biang, %1$s</string>
+    <string name="home_subgreeting">Kine ki dei kiei kiei kiba phi lah ban sngewbha mynta.</string>
+    <string name="home_todays_memory">JINGKYNMAW MYNTA</string>
+    <string name="home_view_memory">KHMIH JINGKYNMAW</string>
+    <string name="home_todays_activity">KAM MYNTA SNGI</string>
+    <string name="home_start_activity">SDANG</string>
+    <string name="home_todays_journey">Jingiaid Mynta Sngi</string>
+    <string name="home_journey_morning">Step</string>
+    <string name="home_journey_noon">Sngi</string>
+    <string name="home_journey_evening">Janmiet</string>
+    <string name="home_next">BUD</string>
+    <string name="home_done">DEPU</string>
+
+    <!-- Cognitive Domains -->
+    <string name="domain_memory">Jingkynmaw Bha</string>
+    <string name="domain_attention">Jingpyrkhat Skhem</string>
+    <string name="domain_recognition">Jingithuh Shnong</string>
+    <string name="domain_routine">Jingkynmaw Mynthi</string>
+    <string name="domain_pattern">Sur Jingrwai</string>
+
+    <!-- Northeast Heritage Card -->
+    <string name="heritage_our_roots">KI THIED JONG NGI</string>
+    <string name="heritage_places_stories">Ki Shnong &amp; Puriskam</string>
+    <string name="heritage_explore_subtitle">Wad ya ki jingkynmaw habar Shatei Lam-Mihngi Ri-India.</string>
+
+    <!-- Family & People -->
+    <string name="family_title">Ka Iing-sem Jong Nga</string>
+    <string name="family_subtitle">Ki ba ieit jong phi bad ki dkhot iing-sem:</string>
+    <string name="family_add_member">+ PYNKIAT DKHOT IING-SEM</string>
+    <string name="family_empty_title">PUTYM DON DKHOT IING-SEM</string>
+    <string name="family_empty_desc">Pynkiat ki briew kiba kham kordor tam.</string>
+
+    <!-- Who's Who Game -->
+    <string name="game_whos_who_title">Uei Une / Kaae Kane?</string>
+    <string name="game_whos_who_prompt">Uei / Kae kane?</string>
+    <string name="game_choose_name">Jied kyrteng:</string>
+    <string name="game_correct_feedback">Dei bha! +10 XP</string>
+    <string name="game_gentle_retry">Bha hi — tynjuh biang.</string>
+    <string name="game_round_counter">Round %1$d na %2$d</string>
+
+    <!-- Where Was It? (Places Game) -->
+    <string name="game_places_title">Hangno Kane?</string>
+    <string name="game_places_prompt">Hangno kane ka jingkynmaw ka jia?</string>
+    <string name="game_places_empty_title">PYNKIAT KAM KHAM DUNA 3 KI SHNONG</string>
+    <string name="game_places_empty_desc">Sngewbha buh duna tam 3 ki shnong bad dur ban ialeh.</string>
+
+    <!-- Name That Tune (Music Game) -->
+    <string name="game_music_title">Ithuh Sur Jingrwai</string>
+    <string name="game_music_listen">Sngap ia ka jingrwai.</string>
+    <string name="game_music_prompt">Kae kane ka jingrwai?</string>
+    <string name="game_music_play">▶ PYNSNGAP JINGRWAI</string>
+    <string name="game_music_stop">SANGEH JINGRWAI</string>
+
+    <!-- Memory Talk -->
+    <string name="memory_talk_title">Iathuh Shabaphang Kane Ka Jingkynmaw</string>
+    <string name="memory_talk_prompt">Uei / Kae kaba don bad phi?</string>
+    <string name="memory_talk_speak">🎤 TYNNAI BAN KREN</string>
+    <string name="memory_talk_listening">🔴 SNGAP... TYNNAI BAN PYNDEPU</string>
+    <string name="memory_talk_dont_remember">NGA M KY NMAW SHUH</string>
+    <string name="memory_talk_dont_remember_feedback">Bha hi. Ain pynkhmih lang ia ka dur.</string>
+    <string name="memory_talk_read_aloud">PYNSNGAP JINGKREN</string>
+    <string name="memory_talk_stop_voice">SANGEH SUR</string>
+
+    <!-- Reminders Screen -->
+    <string name="reminders_title">Jingpynkynmaw</string>
+    <string name="reminders_subtitle">Ki kam ka sngi bad ki por dih dawai</string>
+    <string name="reminders_add_button">+ PYNKIAT JINGPYNKYNMAW</string>
+    <string name="reminders_empty_title">YM DON JINGPYNKYNMAW</string>
+    <string name="reminders_empty_desc">Pynkiat jingpynkynmaw ban yarap pynbeit ia ka sngi jong phi.</string>
+    <string name="reminders_mark_done">Dak Depu</string>
+    <string name="reminders_completed">La Depu</string>
+    <string name="reminders_delete">Pynduh</string>
+
+    <!-- Progress Screen -->
+    <string name="progress_title">Jingkit U Nonpang</string>
+    <string name="progress_subtitle">Ka jingkiew Jingmut &amp; Jingdonakor Statistics</string>
+    <string name="progress_domains_title">Ki Kyntoit Jingmut</string>
+    <string name="progress_accuracy">Jingdei Bha</string>
+    <string name="progress_sessions">Ki Por</string>
+    <string name="progress_total_xp">Baroh XP</string>
+
+    <!-- Profile & Settings -->
+    <string name="profile_title">Profile U Nongpang</string>
+    <string name="profile_info">Jingiathuh Nongpang</string>
+    <string name="profile_language_pref">Jingjied Ktien</string>
+    <string name="profile_emergency_contact">Jingiapyrkhat Kyrkieh</string>
+    <string name="profile_caregiver_info">Nongsumar Ba Iasoh</string>
+    <string name="profile_select_language">Jied Ktien</string>
+
+    <!-- Care Chat -->
+    <string name="care_chat_title">Care Chat</string>
+    <string name="care_chat_subtitle">Iakren bad u nongsumar jong phi</string>
+    <string name="care_chat_placeholder">Thoh kyntien...</string>
+    <string name="care_chat_send">Phah</string>
+
+    <!-- Settings -->
+    <string name="settings_show_heritage">Pyniphi Jingkynmaw Tynrai</string>
+    <string name="settings_show_heritage_desc">Pyniphi ki card jingkynmaw Shatei Lam-Mihngi Ri-India</string>
+    <string name="settings_easy_mode_title">❤️ MODE SUKI</string>
+    <string name="settings_game_mode_title">🎮 MODE JINGIALEH</string>
+
+    <!-- Errors & States -->
+    <string name="state_loading">Dang pynbiang...</string>
+    <string name="state_error_network">Jingthut Network. Sngewbha tynjuh biang.</string>
+    <string name="state_recommendation_unavailable">Jingai jingmut ymdon mynta.</string>
+    <string name="state_no_data">Ym don data.</string>
+</resources>

@@ -29,6 +29,7 @@ object PreferenceKeys {
     val SOUND_EFFECTS = booleanPreferencesKey("sound_effects")
     val HAPTICS = booleanPreferencesKey("haptics")
     val HAS_SEEN_ONBOARDING = booleanPreferencesKey("has_seen_onboarding")
+    val APP_LANGUAGE = stringPreferencesKey("app_language")
 
     // Caregiver Gameplay Statistics
     val GAMES_PLAYED = intPreferencesKey("games_played")

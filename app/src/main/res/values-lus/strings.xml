@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Memory Moments</string>
+    <string name="title_memory">HREHCHHUAHNA</string>
+    <string name="title_moments">HUN HLUTAK</string>
+    <string name="subtitle">HRE RENG LA. HRECHHUAK LA. INFIN RAWH.</string>
+    <string name="play">KHELHNA</string>
+    <string name="family">CHHUNGKUA</string>
+    <string name="settings">SETTINGS</string>
+    <string name="try_demo">DEMO KHELHNA</string>
+    <string name="back">Kirna</string>
+    <string name="level_label">LEVEL %1$s</string>
+    <string name="stars_label">ARSI %1$d</string>
+    <string name="best_combo_label">COMBO THA BER %1$d</string>
+    <string name="not_a_medical_tool">Brain insawhharhna game. Damdawi inenfiahna hmanrua a ni lo.</string>
+    <string name="family_setup_title">Chhungkua Ruahmanna</string>
+    <string name="game_setup_title">Game Ruahmanna</string>
+    <string name="game_title">Game</string>
+    <string name="results_title">Khelh Chhuah Tlat</string>
+    <string name="settings_title">Settings</string>
+    <string name="coming_soon">Thleng thuai tura ruahman</string>
+
+    <!-- Navigation & Core Tabs -->
+    <string name="nav_home">In</string>
+    <string name="nav_games">Gamelte</string>
+    <string name="nav_memories">Hrehchhuahna</string>
+    <string name="nav_family">Chhungkua</string>
+    <string name="nav_progress">Hmasawnna</string>
+    <string name="nav_reminders">Hriattirna</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_more">Tadante</string>
+
+    <!-- General Buttons & Actions -->
+    <string name="btn_start">TANNA</string>
+    <string name="btn_finish">ZAWNNA</string>
+    <string name="btn_submit">THAWHLUH</string>
+    <string name="btn_save">KHAYCHHUAH</string>
+    <string name="btn_cancel">TITAWP</string>
+    <string name="btn_next">DWT</string>
+    <string name="btn_play_now">KHELH LAWH</string>
+    <string name="btn_retry">KHEL HLETHING</string>
+
+    <!-- Home Dashboard -->
+    <string name="home_greeting_morning">Zing tha le, %1$s</string>
+    <string name="home_greeting_afternoon">Chhun tha le, %1$s</string>
+    <string name="home_greeting_evening">Zan tha le, %1$s</string>
+    <string name="home_greeting_default">Lo kir leh rawh le, %1$s</string>
+    <string name="home_subgreeting">Vawiin atana thil nuam tak kan ruahman e.</string>
+    <string name="home_todays_memory">VAWIIN HREHCHHUAHNA</string>
+    <string name="home_view_memory">HREHCHHUAHNA ENNA</string>
+    <string name="home_todays_activity">VAWIIN THILTIH</string>
+    <string name="home_start_activity">TANNA</string>
+    <string name="home_todays_journey">Vawiin Zinna</string>
+    <string name="home_journey_morning">Zing</string>
+    <string name="home_journey_noon">Chhun</string>
+    <string name="home_journey_evening">Zan</string>
+    <string name="home_next">DWT</string>
+    <string name="home_done">ZAWNG</string>
+
+    <!-- Cognitive Domains -->
+    <string name="domain_memory">Hriatrengna</string>
+    <string name="domain_attention">Rikuthapna</string>
+    <string name="domain_recognition">Hmun Hrehchhuahna</string>
+    <string name="domain_routine">Nitawm Hrehchhuahna</string>
+    <string name="domain_pattern">Hla Aw</string>
+
+    <!-- Northeast Heritage Card -->
+    <string name="heritage_our_roots">KAN BULTHUT</string>
+    <string name="heritage_places_stories">Hmunte &amp; Thawnthute</string>
+    <string name="heritage_explore_subtitle">Hmar-Chhak India ramhrehchhuahna zong rawh.</string>
+
+    <!-- Family & People -->
+    <string name="family_title">Ka Chhungkua</string>
+    <string name="family_subtitle">I chhungte leh hmangaihte:</string>
+    <string name="family_add_member">+ CHHUNGTE BELHNA</string>
+    <string name="family_empty_title">CHHUNGTE LA AWM LO</string>
+    <string name="family_empty_desc">I mi hlu takte belh rawh.</string>
+
+    <!-- Who's Who Game -->
+    <string name="game_whos_who_title">Tu nge a nih?</string>
+    <string name="game_whos_who_prompt">Tu nge a nih le?</string>
+    <string name="game_choose_name">Hming thlang rawh:</string>
+    <string name="game_correct_feedback">A dik chiah! +10 XP</string>
+    <string name="game_gentle_retry">A pawi lo — thap hlething rawh.</string>
+    <string name="game_round_counter">Round %1$d (%2$d zingah)</string>
+
+    <!-- Where Was It? (Places Game) -->
+    <string name="game_places_title">Khawiah nge a nih?</string>
+    <string name="game_places_prompt">He hrehchhuahna hi khawia mi nge?</string>
+    <string name="game_places_empty_title">HMUN 3 AINTAWMRING BELH RAWH</string>
+    <string name="game_places_empty_desc">Khelh a nih theih nan hmun 3 leh thlalak khaychhuak rawh.</string>
+
+    <!-- Name That Tune (Music Game) -->
+    <string name="game_music_title">Hla Hming Hrechhuak Rawh</string>
+    <string name="game_music_listen">Hla hi ngaithla rawh.</string>
+    <string name="game_music_prompt">He hla hi tu nge / eng hla nge?</string>
+    <string name="game_music_play">▶ HLA PLAY NA</string>
+    <string name="game_music_stop">HLA TAWP NA</string>
+
+    <!-- Memory Talk -->
+    <string name="memory_talk_title">He Hrehchhuahna Hi Hrilh Rawh</string>
+    <string name="memory_talk_prompt">Tu nge i hnenah awm?</string>
+    <string name="memory_talk_speak">🎤 TAWNG TURIN MET RAWH</string>
+    <string name="memory_talk_listening">🔴 NGAITHLA MEK... ZAWN TURIN MET RAWH</string>
+    <string name="memory_talk_dont_remember">KA HRE TA LO</string>
+    <string name="memory_talk_dont_remember_feedback">A pawi lo hrim hrim. Thlalak hi en dun ang le.</string>
+    <string name="memory_talk_read_aloud">CHHIAR CHHUAK RAWH</string>
+    <string name="memory_talk_stop_voice">AW TAWP RAWH</string>
+
+    <!-- Reminders Screen -->
+    <string name="reminders_title">Hriattirna</string>
+    <string name="reminders_subtitle">Nitawm thiltih leh damdawi ei hun</string>
+    <string name="reminders_add_button">+ HRIATTIRNA BELH NA</string>
+    <string name="reminders_empty_title">HRIATTIRNA AWM LO</string>
+    <string name="reminders_empty_desc">I ni hman dan tur ruahman nan hriattirna belh rawh.</string>
+    <string name="reminders_mark_done">Ti Tlingtlat</string>
+    <string name="reminders_completed">Tih Tlin A Ni</string>
+    <string name="reminders_delete">Paihnawh</string>
+
+    <!-- Progress Screen -->
+    <string name="progress_title">Damlo Hmasawnna</string>
+    <string name="progress_subtitle">Brain hmasawnna &amp; Khelh zong zong</string>
+    <string name="progress_domains_title">Hriatrengna Hmunte</string>
+    <string name="progress_accuracy">Dikna</string>
+    <string name="progress_sessions">Hun Hmante</string>
+    <string name="progress_total_xp">Total XP</string>
+
+    <!-- Profile & Settings -->
+    <string name="profile_title">Damlo Profile</string>
+    <string name="profile_info">Damlo Chanchin</string>
+    <string name="profile_language_pref">Tawng Thlan</string>
+    <string name="profile_emergency_contact">Hmanmawh Biak Pawhna</string>
+    <string name="profile_caregiver_info">Enkawltu Thlunzawm</string>
+    <string name="profile_select_language">Tawng Thlang Rawh</string>
+
+    <!-- Care Chat -->
+    <string name="care_chat_title">Care Chat</string>
+    <string name="care_chat_subtitle">I enkawltu bia rawh</string>
+    <string name="care_chat_placeholder">Thuchah ziak rawh...</string>
+    <string name="care_chat_send">Thawnna</string>
+
+    <!-- Settings -->
+    <string name="settings_show_heritage">Hnam Rohlu Thlalakte</string>
+    <string name="settings_show_heritage_desc">Hmar-Chhak India hrehchhuahna leh card-te en rawh</string>
+    <string name="settings_easy_mode_title">❤️ EASY MODE</string>
+    <string name="settings_game_mode_title">🎮 GAME MODE</string>
+
+    <!-- Errors & States -->
+    <string name="state_loading">Bawhzui mek...</string>
+    <string name="state_error_network">Network harsatna. Khawngaihin thap hlething rawh.</string>
+    <string name="state_recommendation_unavailable">Hriattirna a awm rih lo.</string>
+    <string name="state_no_data">Data a awm lo.</string>
+</resources>

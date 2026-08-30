@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">মেমোরি মোমেন্টস</string>
+    <string name="title_memory">নিংশিংশিং</string>
+    <string name="title_moments">তানজাশিং</string>
+    <string name="subtitle">নিংশিংবিয়ু। খঙবিয়ু। অমুক অনৌবা ওইনা শম্নবিয়ু।</string>
+    <string name="play">শানবিয়ু</string>
+    <string name="family">ইমুং-মনুং</string>
+    <string name="settings">সেটিংশিং</string>
+    <string name="try_demo">ডেমো য়েংবিয়ু</string>
+    <string name="back">হল্লকপা</string>
+    <string name="level_label">থাক %1$s</string>
+    <string name="stars_label">%1$d থাবানিশিং</string>
+    <string name="best_combo_label">খ্বাইদগী ফবা কম্বো %1$d</string>
+    <string name="not_a_medical_tool">লৌশিং ক্যানবা শান্নবগী হিদাক-লাং নত্তে।</string>
+    <string name="family_setup_title">ইমুং-মনুং শেম্বা</string>
+    <string name="game_setup_title">শান্নবগী শেম্বা</string>
+    <string name="game_title">শান্নবা</string>
+    <string name="results_title">ফলাফল</string>
+    <string name="settings_title">সেটিংশিং</string>
+    <string name="coming_soon">মথংদা লাক্কনি</string>
+
+    <!-- Navigation & Core Tabs -->
+    <string name="nav_home">য়ুম</string>
+    <string name="nav_games">শান্নবা</string>
+    <string name="nav_memories">নিংশিংশিং</string>
+    <string name="nav_family">ইমুং-মনুং</string>
+    <string name="nav_progress">মাংলোমদা চংশিনবা</string>
+    <string name="nav_reminders">নিংশিংহনবা</string>
+    <string name="nav_profile">প্রোফাইল</string>
+    <string name="nav_more">অতোপ্পা</string>
+
+    <!-- General Buttons & Actions -->
+    <string name="btn_start">হৌবিয়ু</string>
+    <string name="btn_finish">লোইশিনবিয়ু</string>
+    <string name="btn_submit">পিশিনবিয়ু</string>
+    <string name="btn_save">থম্বিয়ু</string>
+    <string name="btn_cancel">কাকথোকবিয়ু</string>
+    <string name="btn_next">মথংগী</string>
+    <string name="btn_play_now">হৌজিক শানবিয়ু</string>
+    <string name="btn_retry">অমুক হোৎনবিয়ু</string>
+
+    <!-- Home Dashboard -->
+    <string name="home_greeting_morning">অয়ুকফম ফজরসে, %1$s</string>
+    <string name="home_greeting_afternoon">নুংথিলফম ফজরসে, %1$s</string>
+    <string name="home_greeting_evening">নুমিদাংফম ফজরসে, %1$s</string>
+    <string name="home_greeting_default">তরাম্না ওকচরি, %1$s</string>
+    <string name="home_subgreeting">ঙসি অদোমগীদমক তোপ তোপ্পা থৌরম লৈজরে।</string>
+    <string name="home_todays_memory">ঙসিগী নিংশিংবা</string>
+    <string name="home_view_memory">নিংশিংবা য়েংবিয়ু</string>
+    <string name="home_todays_activity">ঙসিগী থৌরম</string>
+    <string name="home_start_activity">হৌবিয়ু</string>
+    <string name="home_todays_journey">ঙসিগী খোংচৎ</string>
+    <string name="home_journey_morning">অয়ুক</string>
+    <string name="home_journey_noon">নুংথিল</string>
+    <string name="home_journey_evening">নুমিদাং</string>
+    <string name="home_next">মথংগী</string>
+    <string name="home_done">লোইরে</string>
+
+    <!-- Cognitive Domains -->
+    <string name="domain_memory">নিংশিং ফুকাস</string>
+    <string name="domain_attention">মিৎয়েপ থমবা</string>
+    <string name="domain_recognition">মফম নিংশিংবা</string>
+    <string name="domain_routine">নুমিৎ খুদিংগী নিংশিংবা</string>
+    <string name="domain_pattern">ইশৈগী কাংলোন</string>
+
+    <!-- Northeast Heritage Card -->
+    <string name="heritage_our_roots">ঐখোয়গী ইথাংফম</string>
+    <string name="heritage_places_stories">মফম অমশুং ৱাৰীশিং</string>
+    <string name="heritage_explore_subtitle">নোংপোParamList মফমগী নিংশিংবশিং থিগৎবিয়ু।</string>
+
+    <!-- Family & People -->
+    <string name="family_title">ঐগী ইমুং-মনুং</string>
+    <string name="family_subtitle">অদোমগী নুংশিবা ইমুং মনুংগী মীওইশিং:</string>
+    <string name="family_add_member">+ ইমুংগী মীওই হাাপচিনবিয়ু</string>
+    <string name="family_empty_title">হৌজিকফাওবা মীওই লৈত্ৰি</string>
+    <string name="family_empty_desc">খ্বাইদগী মরুওইবা মীওইশিং হাপচিনবিয়ু।</string>
+
+    <!-- Who's Who Game -->
+    <string name="game_whos_who_title">কনাগুম্বনো?</string>
+    <string name="game_whos_who_prompt">মসি কনাগুম্বনো?</string>
+    <string name="game_choose_name">মিং খনবিয়ু:</string>
+    <string name="game_correct_feedback">চুমে! +10 XP</string>
+    <string name="game_gentle_retry">য়ারে — অমুক হোৎনবিয়ু।</string>
+    <string name="game_round_counter">রাউন্দ %1$d (%2$d গী মনুংদা)</string>
+
+    <!-- Where Was It? (Places Game) -->
+    <string name="game_places_title">মফম অসিসিবু কদাইদনো?</string>
+    <string name="game_places_prompt">নিংশিংবা অসি কদাইগীনো?</string>
+    <string name="game_places_empty_title">অয়াম্বদা মফম ৩ হাপচিনবিয়ু</string>
+    <string name="game_places_empty_desc">শান্ননবগীদমক অন্ততঃ মফম ৩ লৈহাাপচিনবিয়ু।</string>
+
+    <!-- Name That Tune (Music Game) -->
+    <string name="game_music_title">ইশৈ খনবিয়ু</string>
+    <string name="game_music_listen">ইশৈ অদু তাৱিয়ু।</string>
+    <string name="game_music_prompt">মসি করি ইশৈনো?</string>
+    <string name="game_music_play">▶ ইশৈ শানবিয়ু</string>
+    <string name="game_music_stop">ইশৈ লেপবিয়ু</string>
+
+    <!-- Memory Talk -->
+    <string name="memory_talk_title">নিংশিংবা অসিগী লমজিং লানজিং পীবিয়ু</string>
+    <string name="memory_talk_prompt">অদোমগা লোইননা কনা য়াওবগে?</string>
+    <string name="memory_talk_speak">🎤 ঙাংনবগীদমক নম্বিয়ু</string>
+    <string name="memory_talk_listening">🔴 তারিজরি... লোইশিন্নবগীদমক নম্বিয়ু</string>
+    <string name="memory_talk_dont_remember">ঐ নিংশিংদে</string>
+    <string name="memory_talk_dont_remember_feedback">য়াম্না ফৈ। লাই অদু ইপুন্সি লৈনা য়েংশিনসি।</string>
+    <string name="memory_talk_read_aloud">পাহনবিয়ু</string>
+    <string name="memory_talk_stop_voice">খোঞ্জেল লেপবিয়ু</string>
+
+    <!-- Reminders Screen -->
+    <string name="reminders_title">নিংশিংহনবা</string>
+    <string name="reminders_subtitle">নুমিৎ খুদিংগী থৌরম অমশুং হিদাক থাবগী মতম</string>
+    <string name="reminders_add_button">+ নিংশিংহনবা হাপচিনবিয়ু</string>
+    <string name="reminders_empty_title">নিংশিংহনবা লৈত্ৰি</string>
+    <string name="reminders_empty_desc">অদোমগী নুমিৎতু শেম্বদা মতেং পাংনবগীদমক নিংশিংহনবা হাপচিনবিয়ু।</string>
+    <string name="reminders_mark_done">লোইরে খঙহনবিয়ু</string>
+    <string name="reminders_completed">লোইশিনখ্রে</string>
+    <string name="reminders_delete">কাকথোকবিয়ু</string>
+
+    <!-- Progress Screen -->
+    <string name="progress_title">মাংলোমদা চংশিনবগী চাং</string>
+    <string name="progress_subtitle">লৌশিং অমশুং হেল্পা-চাংগাী তথ্যশিং</string>
+    <string name="progress_domains_title">লৌশিং ক্যানবগী লমশিং</string>
+    <string name="progress_accuracy">চুম্বগী চাং</string>
+    <string name="progress_sessions">মতমশিং</string>
+    <string name="progress_total_xp">পুন্না XP</string>
+
+    <!-- Profile & Settings -->
+    <string name="profile_title">প্রোফাইল</string>
+    <string name="profile_info">অনাবগী পাওদাম</string>
+    <string name="profile_language_pref">লোলগী পামজবা</string>
+    <string name="profile_emergency_contact">অয়াংবা পাও ফাউনবা</string>
+    <string name="profile_caregiver_info">য়েনশিনবগী মীওই</string>
+    <string name="profile_select_language">লোল খনবিয়ু</string>
+
+    <!-- Care Chat -->
+    <string name="care_chat_title">কেয়ার চেট</string>
+    <string name="care_chat_subtitle">অদোমগী য়েনশিনবীরিবা মীওইগা পাও ফাউনবিয়ু</string>
+    <string name="care_chat_placeholder">পাওজেল ইবিয়ু...</string>
+    <string name="care_chat_send">থাবিয়ু</string>
+
+    <!-- Settings -->
+    <string name="settings_show_heritage">ইথাংফমগী পোৎলম উৎবিয়ু</string>
+    <string name="settings_show_heritage_desc">নোংপোParamList মফমগী নিংশিং কাৰ্দশিং উৎবিয়ু</string>
+    <string name="settings_easy_mode_title">❤️ লায়বা মোড</string>
+    <string name="settings_game_mode_title">🎮 শান্নবগী মোড</string>
+
+    <!-- Errors & States -->
+    <string name="state_loading">লোদিং চত্থরি...</string>
+    <string name="state_error_network">নেটৱার্ক অসোয়বা। অমুক হোৎনবিয়ু।</string>
+    <string name="state_recommendation_unavailable">পাউতাক হৌজিক ফংদ্রি।</string>
+    <string name="state_no_data">পাওদাম লৈত্ৰি।</string>
+</resources>

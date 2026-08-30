@@ -24,7 +24,13 @@ class TextToSpeechManager(context: Context) : TextToSpeech.OnInitListener {
 
     override fun onInit(status: Int) {
         if (status == TextToSpeech.SUCCESS) {
-            tts?.language = Locale.getDefault()
+            val currentLocale = Locale.getDefault()
+            val langResult = tts?.setLanguage(currentLocale)
+            if (langResult == TextToSpeech.LANG_MISSING_DATA || langResult == TextToSpeech.LANG_NOT_SUPPORTED) {
+                // Fallback gracefully to Hindi or English if regional TTS voice data is missing
+                val fallback = if (currentLocale.language in listOf("hi", "as", "bn", "mni")) Locale("hi", "IN") else Locale.ENGLISH
+                tts?.setLanguage(fallback)
+            }
             tts?.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
                 override fun onStart(utteranceId: String?) {
                     _isSpeaking.value = true

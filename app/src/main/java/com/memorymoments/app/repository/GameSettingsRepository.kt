@@ -153,6 +153,16 @@ class GameSettingsRepository(context: Context) {
         }
     }
 
+    val appLanguage: Flow<String> = dataStore.data.map { prefs ->
+        prefs[PreferenceKeys.APP_LANGUAGE] ?: "en"
+    }
+
+    suspend fun setAppLanguage(languageCode: String) {
+        dataStore.edit { prefs ->
+            prefs[PreferenceKeys.APP_LANGUAGE] = languageCode
+        }
+    }
+
     suspend fun resetAllData() {
         dataStore.edit { prefs ->
             prefs.clear()

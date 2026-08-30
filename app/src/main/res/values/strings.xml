@@ -25,7 +25,20 @@
     <string name="nav_games">Games</string>
     <string name="nav_memories">Memories</string>
     <string name="nav_family">Family</string>
+    <string name="nav_progress">Progress</string>
+    <string name="nav_reminders">Reminders</string>
+    <string name="nav_profile">Profile</string>
     <string name="nav_more">More</string>
+
+    <!-- General Buttons & Actions -->
+    <string name="btn_start">START</string>
+    <string name="btn_finish">FINISH</string>
+    <string name="btn_submit">SUBMIT</string>
+    <string name="btn_save">SAVE</string>
+    <string name="btn_cancel">CANCEL</string>
+    <string name="btn_next">NEXT</string>
+    <string name="btn_play_now">PLAY NOW</string>
+    <string name="btn_retry">RETRY</string>
 
     <!-- Home Dashboard -->
     <string name="home_greeting_morning">Good Morning, %1$s</string>
@@ -43,6 +56,13 @@
     <string name="home_journey_evening">Evening</string>
     <string name="home_next">NEXT</string>
     <string name="home_done">DONE</string>
+
+    <!-- Cognitive Domains -->
+    <string name="domain_memory">Memory Focus</string>
+    <string name="domain_attention">Attention Focus</string>
+    <string name="domain_recognition">Places Recall</string>
+    <string name="domain_routine">Routine Memory</string>
+    <string name="domain_pattern">Music Pattern</string>
 
     <!-- Northeast Heritage Card -->
     <string name="heritage_our_roots">OUR ROOTS</string>
@@ -87,29 +107,47 @@
     <string name="memory_talk_read_aloud">READ ALOUD</string>
     <string name="memory_talk_stop_voice">STOP VOICE</string>
 
-    <!-- Heritage Categories & Options -->
-    <string name="heritage_category_traditions">Family Traditions</string>
-    <string name="heritage_category_festivals">Festivals &amp; Celebrations</string>
-    <string name="heritage_category_childhood">Childhood Places</string>
-    <string name="heritage_category_food">Traditional Food</string>
-    <string name="heritage_category_music">Music &amp; Songs</string>
-    <string name="heritage_category_clothing">Traditional Clothing</string>
-    <string name="heritage_category_gatherings">Community Gatherings</string>
-    <string name="heritage_category_journeys">Important Journeys</string>
+    <!-- Reminders Screen -->
+    <string name="reminders_title">Reminders</string>
+    <string name="reminders_subtitle">Scheduled daily activities and medication prompts</string>
+    <string name="reminders_add_button">+ ADD REMINDER</string>
+    <string name="reminders_empty_title">NO REMINDERS SCHEDULED</string>
+    <string name="reminders_empty_desc">Add reminders to help structure your day.</string>
+    <string name="reminders_mark_done">Mark Done</string>
+    <string name="reminders_completed">Completed</string>
+    <string name="reminders_delete">Delete</string>
 
-    <!-- Music Categories -->
-    <string name="music_category_family_favorite">Family Favorite</string>
-    <string name="music_category_childhood">Childhood</string>
-    <string name="music_category_festival">Festival</string>
-    <string name="music_category_regional">Regional</string>
-    <string name="music_category_spiritual">Spiritual</string>
-    <string name="music_category_wedding">Wedding</string>
-    <string name="music_category_other">Other</string>
+    <!-- Progress Screen -->
+    <string name="progress_title">Patient Progress</string>
+    <string name="progress_subtitle">Cognitive domain growth &amp; performance statistics</string>
+    <string name="progress_domains_title">Cognitive Domains</string>
+    <string name="progress_accuracy">Accuracy</string>
+    <string name="progress_sessions">Sessions</string>
+    <string name="progress_total_xp">Total XP</string>
+
+    <!-- Profile & Settings -->
+    <string name="profile_title">Patient Profile</string>
+    <string name="profile_info">Patient Information</string>
+    <string name="profile_language_pref">Language Preference</string>
+    <string name="profile_emergency_contact">Emergency Contact</string>
+    <string name="profile_caregiver_info">Linked Caregiver</string>
+    <string name="profile_select_language">Select Language</string>
+
+    <!-- Care Chat -->
+    <string name="care_chat_title">Care Chat</string>
+    <string name="care_chat_subtitle">Connect with your caregiver</string>
+    <string name="care_chat_placeholder">Type a message...</string>
+    <string name="care_chat_send">Send</string>
 
     <!-- Settings -->
     <string name="settings_show_heritage">Show Heritage Content</string>
     <string name="settings_show_heritage_desc">Display Northeast India memories and cultural cards</string>
     <string name="settings_easy_mode_title">❤️ EASY MODE</string>
     <string name="settings_game_mode_title">🎮 GAME MODE</string>
-</resources>
 
+    <!-- Errors & States -->
+    <string name="state_loading">Loading...</string>
+    <string name="state_error_network">Network connection error. Please try again.</string>
+    <string name="state_recommendation_unavailable">Recommendation unavailable right now.</string>
+    <string name="state_no_data">No data available.</string>
+</resources>

@@ -93,6 +93,49 @@ fun SettingsScreen(
                 color = colors.primary
             )
 
+            val appLanguage by viewModel.appLanguage.collectAsStateWithLifecycle()
+            val context = androidx.compose.ui.platform.LocalContext.current
+
+            // 0. LANGUAGE PREFERENCE
+            SettingsCard(title = "LANGUAGE PREFERENCE / ভাষা পছন্দ") {
+                Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                    com.memorymoments.app.utils.AppLanguageManager.SUPPORTED_LANGUAGES.forEach { lang ->
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clickable(role = Role.RadioButton) {
+                                    viewModel.setAppLanguage(lang.code)
+                                    com.memorymoments.app.utils.AppLanguageManager.applyLocale(context, lang.code)
+                                    (context as? android.app.Activity)?.recreate()
+                                }
+                                .padding(vertical = 6.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            RadioButton(
+                                selected = appLanguage.equals(lang.code, ignoreCase = true),
+                                onClick = null,
+                                colors = RadioButtonDefaults.colors(
+                                    selectedColor = colors.primary,
+                                    unselectedColor = colors.textMuted
+                                )
+                            )
+                            Column(modifier = Modifier.padding(start = 10.dp)) {
+                                Text(
+                                    text = lang.nativeName,
+                                    style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
+                                    color = colors.text
+                                )
+                                Text(
+                                    text = lang.englishName,
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    color = colors.textMuted
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+
             Spacer(modifier = Modifier.height(16.dp))
 
             // 1. CULTURAL CUSTOMIZATION

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">মেমোরি মোমেন্টস</string>
+    <string name="title_memory">স্মৃতি</string>
+    <string name="title_moments">মুহূর্ত</string>
+    <string name="subtitle">মনে রাখুন। চিনতে শুনুন। যুক্ত হন।</string>
+    <string name="play">খেলুন</string>
+    <string name="family">পরিবার</string>
+    <string name="settings">সেটিংস</string>
+    <string name="try_demo">ডেমো দেখুন</string>
+    <string name="back">ফিরে যান</string>
+    <string name="level_label">লেভেল %1$s</string>
+    <string name="stars_label">%1$d তারা</string>
+    <string name="best_combo_label">সেরা কম্বো %1$d</string>
+    <string name="not_a_medical_tool">জ্ঞানীয় প্রশিক্ষণ খেলা। চিকিৎসা সংক্রান্ত নির্ণায়ক টুল নয়।</string>
+    <string name="family_setup_title">পরিবার সেটআপ</string>
+    <string name="game_setup_title">গেম সেটআপ</string>
+    <string name="game_title">খেলা</string>
+    <string name="results_title">ফলাফল</string>
+    <string name="settings_title">সেটিংস</string>
+    <string name="coming_soon">শীঘ্রই আসছে</string>
+
+    <!-- Navigation & Core Tabs -->
+    <string name="nav_home">হোম</string>
+    <string name="nav_games">গেমস</string>
+    <string name="nav_memories">স্মৃতিসমূহ</string>
+    <string name="nav_family">পরিবার</string>
+    <string name="nav_progress">অগ্রগতি</string>
+    <string name="nav_reminders">রিমাইন্ডার</string>
+    <string name="nav_profile">প্রোফাইল</string>
+    <string name="nav_more">আরও</string>
+
+    <!-- General Buttons & Actions -->
+    <string name="btn_start">শুরু করুন</string>
+    <string name="btn_finish">শেষ করুন</string>
+    <string name="btn_submit">জমা দিন</string>
+    <string name="btn_save">সংরক্ষণ করুন</string>
+    <string name="btn_cancel">বাতিল করুন</string>
+    <string name="btn_next">পরবর্তী</string>
+    <string name="btn_play_now">এখনই খেলুন</string>
+    <string name="btn_retry">আবার চেষ্টা করুন</string>
+
+    <!-- Home Dashboard -->
+    <string name="home_greeting_morning">শুভ সকাল, %1$s</string>
+    <string name="home_greeting_afternoon">শুভ দুপুর, %1$s</string>
+    <string name="home_greeting_evening">শুভ সন্ধ্যা, %1$s</string>
+    <string name="home_greeting_default">স্বাগতম, %1$s</string>
+    <string name="home_subgreeting">আজ আপনার জন্য একটি বিশেষ কার্যক্রম রয়েছে।</string>
+    <string name="home_todays_memory">আজকের স্মৃতি</string>
+    <string name="home_view_memory">স্মৃতি দেখুন</string>
+    <string name="home_todays_activity">আজকের কার্যক্রম</string>
+    <string name="home_start_activity">শুরু করুন</string>
+    <string name="home_todays_journey">আজকের যাত্রা</string>
+    <string name="home_journey_morning">সকাল</string>
+    <string name="home_journey_noon">দুপুর</string>
+    <string name="home_journey_evening">সন্ধ্যা</string>
+    <string name="home_next">পরবর্তী</string>
+    <string name="home_done">সম্পন্ন</string>
+
+    <!-- Cognitive Domains -->
+    <string name="domain_memory">স্মৃতি মনোযোগ</string>
+    <string name="domain_attention">মনোযোগ কেন্দ্র</string>
+    <string name="domain_recognition">স্থান স্মরণ</string>
+    <string name="domain_routine">দৈনন্দিন স্মৃতি</string>
+    <string name="domain_pattern">সঙ্গীত প্যাটার্ন</string>
+
+    <!-- Northeast Heritage Card -->
+    <string name="heritage_our_roots">আমাদের শিকড়</string>
+    <string name="heritage_places_stories">স্থান ও গল্প</string>
+    <string name="heritage_explore_subtitle">উত্তর-পূর্ব ভারতের স্মৃতিসমূহ অনুসন্ধান করুন।</string>
+
+    <!-- Family & People -->
+    <string name="family_title">আমার পরিবার</string>
+    <string name="family_subtitle">আপনার প্রিয়জন ও পরিবারের সদস্যরা:</string>
+    <string name="family_add_member">+ পরিবারের সদস্য যোগ করুন</string>
+    <string name="family_empty_title">এখনও কোনো সদস্য নেই</string>
+    <string name="family_empty_desc">সবচেয়ে গুরুত্বপূর্ণ প্রিয়জনদের যুক্ত করুন।</string>
+
+    <!-- Who's Who Game -->
+    <string name="game_whos_who_title">ইনি কে?</string>
+    <string name="game_whos_who_prompt">ইনি কে হন?</string>
+    <string name="game_choose_name">একটি নাম নির্বাচন করুন:</string>
+    <string name="game_correct_feedback">সঠিক উত্তর! +10 XP</string>
+    <string name="game_gentle_retry">কোনো ব্যাপার না — আবার চেষ্টা করুন।</string>
+    <string name="game_round_counter">রাউন্ড %1$d (%2$d এর)</string>
+
+    <!-- Where Was It? (Places Game) -->
+    <string name="game_places_title">এই স্থানটি কোথায়?</string>
+    <string name="game_places_prompt">এই স্মৃতিটি কোথাকার ছিল?</string>
+    <string name="game_places_empty_title">কমপক্ষে ৩টি স্থান যোগ করুন</string>
+    <string name="game_places_empty_desc">খেলার জন্য কমপক্ষে ৩টি স্থান যোগ করে ছবি সংরক্ষণ করুন।</string>
+
+    <!-- Name That Tune (Music Game) -->
+    <string name="game_music_title">সুরটি চিনুন</string>
+    <string name="game_music_listen">গানটি শুনুন।</string>
+    <string name="game_music_prompt">এটি কোন গান?</string>
+    <string name="game_music_play">▶ গান চালান</string>
+    <string name="game_music_stop">গান বন্ধ করুন</string>
+
+    <!-- Memory Talk -->
+    <string name="memory_talk_title">এই স্মৃতি সম্পর্কে বলুন</string>
+    <string name="memory_talk_prompt">আপনার সাথে কে ছিলেন?</string>
+    <string name="memory_talk_speak">🎤 কথা বলতে ট্যাপ করুন</string>
+    <string name="memory_talk_listening">🔴 শোনা হচ্ছে... শেষ করতে ট্যাপ করুন</string>
+    <string name="memory_talk_dont_remember">আমার মনে নেই</string>
+    <string name="memory_talk_dont_remember_feedback">একদম ঠিক আছে। আসুন একসাথে ছবিটি দেখি।</string>
+    <string name="memory_talk_read_aloud">পড়ে শোনান</string>
+    <string name="memory_talk_stop_voice">ভয়েস বন্ধ করুন</string>
+
+    <!-- Reminders Screen -->
+    <string name="reminders_title">রিমাইন্ডার</string>
+    <string name="reminders_subtitle">দৈনন্দিন কাজ ও ওষুধের সময়সূচী</string>
+    <string name="reminders_add_button">+ রিমাইন্ডার যোগ করুন</string>
+    <string name="reminders_empty_title">কোনো রিমাইন্ডার নেই</string>
+    <string name="reminders_empty_desc">আপনার দিনটি গোছাতে রিমাইন্ডার যুক্ত করুন।</string>
+    <string name="reminders_mark_done">সম্পন্ন চিহ্নিত করুন</string>
+    <string name="reminders_completed">সম্পন্ন হয়েছে</string>
+    <string name="reminders_delete">মুছে ফেলুন</string>
+
+    <!-- Progress Screen -->
+    <string name="progress_title">রোগীর অগ্রগতি</string>
+    <string name="progress_subtitle">জ্ঞানীয় বিকাশ ও পারফরম্যান্সের তথ্য</string>
+    <string name="progress_domains_title">জ্ঞানীয় ক্ষেত্রসমূহ</string>
+    <string name="progress_accuracy">সঠিকতা</string>
+    <string name="progress_sessions">সেশন</string>
+    <string name="progress_total_xp">মোট XP</string>
+
+    <!-- Profile & Settings -->
+    <string name="profile_title">রোগীর প্রোফাইল</string>
+    <string name="profile_info">রোগীর তথ্য</string>
+    <string name="profile_language_pref">ভাষা পছন্দ</string>
+    <string name="profile_emergency_contact">জরুরি যোগাযোগ</string>
+    <string name="profile_caregiver_info">সংযুক্ত যত্ন প্রদানকারী</string>
+    <string name="profile_select_language">ভাষা নির্বাচন করুন</string>
+
+    <!-- Care Chat -->
+    <string name="care_chat_title">কেয়ার চ্যাট</string>
+    <string name="care_chat_subtitle">আপনার যত্ন প্রদানকারীর সাথে কথা বলুন</string>
+    <string name="care_chat_placeholder">বার্তা লিখুন...</string>
+    <string name="care_chat_send">পাঠান</string>
+
+    <!-- Settings -->
+    <string name="settings_show_heritage">ঐতিহ্য বিষয়বস্তু দেখান</string>
+    <string name="settings_show_heritage_desc">উত্তর-পূর্ব ভারতের স্মৃতি ও সাংস্কৃতিক কার্ডসমূহ দেখান</string>
+    <string name="settings_easy_mode_title">❤️ সহজ মোড</string>
+    <string name="settings_game_mode_title">🎮 গেম মোড</string>
+
+    <!-- Errors & States -->
+    <string name="state_loading">লোড হচ্ছে...</string>
+    <string name="state_error_network">নেটওয়ার্ক সমস্যা। আবার চেষ্টা করুন।</string>
+    <string name="state_recommendation_unavailable">পরামর্শ বর্তমানে উপলব্ধ নেই।</string>
+    <string name="state_no_data">কোনো তথ্য উপলব্ধ নেই।</string>
+</resources>

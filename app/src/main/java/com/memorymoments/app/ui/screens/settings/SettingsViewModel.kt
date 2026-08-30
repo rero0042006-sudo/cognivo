@@ -121,9 +121,21 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
         initialValue = true
     )
 
+    val appLanguage: StateFlow<String> = settingsRepo.appLanguage.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5_000),
+        initialValue = "en"
+    )
+
     fun setShowHeritageContent(show: Boolean) {
         viewModelScope.launch {
             settingsRepo.setShowHeritageContent(show)
+        }
+    }
+
+    fun setAppLanguage(languageCode: String) {
+        viewModelScope.launch {
+            settingsRepo.setAppLanguage(languageCode)
         }
     }
 
