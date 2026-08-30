@@ -419,13 +419,6 @@ private fun StitchHomeContent(
                 modifier = Modifier.fillMaxWidth(),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                // 0. AI MODEL 1 RECOMMENDATION CARD
-                RecommendedNextActivityCard(
-                    state = recommendationState,
-                    onNavigateRoute = onNavigateRoute,
-                    onDefaultPlay = onPlay
-                )
-
                 // 1. TODAY'S MEMORY CARD (Stitch Dashboard Spec)
                 if (dailyData.todayMemory != null) {
                     StitchMemoryCard(
@@ -1205,13 +1198,6 @@ private fun GameModeHomeScreenContent(
             }
 
             XpBar(current = stats.xp % XP_PLACEHOLDER_MAX, max = XP_PLACEHOLDER_MAX)
-
-            // AI Model 1 Recommendation Card
-            RecommendedNextActivityCard(
-                state = recommendationState,
-                onNavigateRoute = onNavigateRoute,
-                onDefaultPlay = onPlay
-            )
 
             // Daily Companion Card
             if (dailyData.isEnabled && dailyData.todaySong != null) {
