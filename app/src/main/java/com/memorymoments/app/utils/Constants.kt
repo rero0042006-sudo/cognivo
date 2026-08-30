@@ -9,5 +9,5 @@ object Constants {
     const val GENERATION_TIMEOUT_MS = 90_000L
     const val DISTRACTOR_POOL_SIZE = 8
     const val DISTRACTOR_MIN_POOL = 6
-    const val HARD_DISTRACTOR_POOL_SIZE = 4
+    const val HARD_DISTRACTOR_POOL_SIZE = 15
 }

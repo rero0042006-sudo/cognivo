@@ -15,7 +15,9 @@ import com.memorymoments.app.repository.AppStateRepository
 import com.memorymoments.app.repository.DistractorRepository
 import com.memorymoments.app.repository.FamilyRepository
 import com.memorymoments.app.repository.GroqPersonalizationRepository
+import com.memorymoments.app.repository.VisualProfileRepository
 import com.memorymoments.app.utils.Constants
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -171,9 +173,8 @@ class GameViewModel(
                 return@launch
             }
 
-            // For CHALLENGE mode, try to use per-member Hard distractors.
-            // For EASY/NORMAL, use the existing generic pool.
-            val distractors = if (style == DistractorStyle.CHALLENGE && !isDemo) {
+            // Load per-member AI distractors for family members
+            val distractors = if (!isDemo) {
                 loadHardDistractors(familyMembers)
             } else {
                 val pool = distractorRepo.cachedPool(style, includeDemo = true)
@@ -186,8 +187,19 @@ class GameViewModel(
                 config = GameConfig(
                     roundCount = Constants.DEFAULT_ROUNDS,
                     isDemo = isDemo
-                )
+                ),
+                style = style
             )
+
+            // Trigger non-blocking background enrichment of the 15-image distractor pool for family members
+            if (!isDemo) {
+                viewModelScope.launch(Dispatchers.IO) {
+                    val visualProfileRepo = VisualProfileRepository(getApplication())
+                    for (member in familyMembers) {
+                        distractorRepo.ensureHardPool(member, visualProfileRepo, targetSize = Constants.HARD_DISTRACTOR_POOL_SIZE)
+                    }
+                }
+            }
 
             questions = engine.generateQuestions(Constants.DEFAULT_ROUNDS)
             currentRoundIndex = 0
@@ -218,8 +230,8 @@ class GameViewModel(
     }
 
     /**
-     * For Hard mode, collect per-member cached distractors.
-     * Falls back to generic CHALLENGE pool if per-member cache is empty.
+     * Collect per-member cached AI distractors for family members.
+     * Falls back to generic pool if per-member cache is empty.
      */
     private suspend fun loadHardDistractors(
         familyMembers: List<FamilyMember>
@@ -231,11 +243,11 @@ class GameViewModel(
         }
         if (allHard.isNotEmpty()) return allHard
 
-        // Fall back to generic CHALLENGE pool
-        val generic = distractorRepo.cachedPool(DistractorStyle.CHALLENGE, includeDemo = true)
+        // Fall back to generic pool
+        val generic = distractorRepo.cachedPool(style, includeDemo = true)
         if (generic.isNotEmpty()) return generic
 
-        return distractorRepo.createDemoPool(DistractorStyle.CHALLENGE)
+        return distractorRepo.createDemoPool(style)
     }
 
     private fun enrichQuestionsWithGroq(familyMembers: List<FamilyMember>) {

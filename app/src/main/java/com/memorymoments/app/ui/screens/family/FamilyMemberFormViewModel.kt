@@ -10,6 +10,7 @@ import com.memorymoments.app.model.RelationshipOptions
 import com.memorymoments.app.repository.DistractorRepository
 import com.memorymoments.app.repository.FamilyRepository
 import com.memorymoments.app.repository.VisualProfileRepository
+import com.memorymoments.app.utils.Constants
 import com.memorymoments.app.utils.ImageStorage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -178,6 +179,11 @@ class FamilyMemberFormViewModel(
         viewModelScope.launch {
             _state.update { it.copy(isSaving = true) }
             val result = if (current.isEditing) repository.update(member) else repository.add(member)
+            if (result.isSuccess) {
+                viewModelScope.launch(Dispatchers.IO) {
+                    distractorRepo.ensureHardPool(member, visualProfileRepo, targetSize = Constants.HARD_DISTRACTOR_POOL_SIZE)
+                }
+            }
             _state.update {
                 it.copy(
                     isSaving = false,

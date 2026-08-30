@@ -392,7 +392,18 @@ class DistractorRepository(context: Context) {
                 source = DistractorCharacter.Source.CLOUDFLARE,
                 sourceFamilyMemberId = sourceFamilyMemberId
             )
-            persist(merge(loadAll(), listOf(character)))
+            var currentAll = merge(loadAll(), listOf(character))
+            if (sourceFamilyMemberId != null) {
+                val memberPool = currentAll.filter { it.sourceFamilyMemberId == sourceFamilyMemberId }.sortedBy { it.generatedAt }
+                if (memberPool.size > Constants.HARD_DISTRACTOR_POOL_SIZE) {
+                    val excessCount = memberPool.size - Constants.HARD_DISTRACTOR_POOL_SIZE
+                    val toEvict = memberPool.take(excessCount)
+                    toEvict.forEach { imageStorage.deleteDistractor(it.imageUri) }
+                    val evictIds = toEvict.map { it.id }.toSet()
+                    currentAll = currentAll.filterNot { it.id in evictIds }
+                }
+            }
+            persist(currentAll)
             Result.success(character)
         }
     }
