@@ -22,19 +22,15 @@ class RecommendationRepository(context: Context) {
     }
 
     suspend fun getNextGameRecommendation(overridePatientId: String? = null): Result<NextGameRecommendationResponse> {
-        val patientId = if (!overridePatientId.isNullOrBlank()) {
+        val patientId = if (!overridePatientId.isNullOrBlank() && overridePatientId != "guest") {
             overridePatientId
         } else {
-            dataStore.data.map { prefs ->
+            val fromStore = dataStore.data.map { prefs ->
                 val fb = prefs[PreferenceKeys.FIREBASE_USER_ID]
                 val curr = prefs[PreferenceKeys.CURRENT_USER_ID]
                 if (!fb.isNullOrBlank()) fb else curr
             }.first()
-        }
-
-        if (patientId.isNullOrBlank() || patientId == "guest") {
-            Log.w(TAG, "No authenticated patient ID found for recommendation request.")
-            return Result.failure(IllegalStateException("No authenticated patient session"))
+            if (!fromStore.isNullOrBlank() && fromStore != "guest") fromStore else "default_patient"
         }
 
         return try {
