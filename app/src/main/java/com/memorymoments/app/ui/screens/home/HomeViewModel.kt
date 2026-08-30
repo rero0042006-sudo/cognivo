@@ -9,8 +9,14 @@ import com.memorymoments.app.model.Song
 import com.memorymoments.app.repository.AppStateRepository
 import com.memorymoments.app.repository.DailyCompanionData
 import com.memorymoments.app.repository.DailyCompanionRepository
+import com.memorymoments.app.repository.DomainGameMapper
+import com.memorymoments.app.repository.RecommendationRepository
+import com.memorymoments.app.repository.RecommendationUiState
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
@@ -19,6 +25,10 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     val dailyCompanionRepo = DailyCompanionRepository(application)
     val audioPlaybackManager = AudioPlaybackManager(application)
     private val caregiverRepo = com.memorymoments.app.repository.CaregiverRepository(application)
+    private val recommendationRepo = RecommendationRepository(application)
+
+    private val _recommendationState = MutableStateFlow(RecommendationUiState(isLoading = true))
+    val recommendationState: StateFlow<RecommendationUiState> = _recommendationState.asStateFlow()
 
     val stats: StateFlow<AppStats> = appStateRepo.stats.stateIn(
         scope = viewModelScope,
@@ -37,6 +47,53 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     init {
         viewModelScope.launch {
             dailyCompanionRepo.checkAndRefreshDailyState()
+        }
+        viewModelScope.launch {
+            recommendationRepo.currentPatientId.collectLatest { patientId ->
+                if (!patientId.isNullOrBlank() && patientId != "guest") {
+                    loadRecommendation(patientId)
+                } else {
+                    _recommendationState.value = RecommendationUiState(
+                        isLoading = false,
+                        recommendedDomain = "memory",
+                        recommendedGameTitle = DomainGameMapper.getGameTitle("memory"),
+                        recommendedRoute = DomainGameMapper.getGameRoute("memory"),
+                        error = null
+                    )
+                }
+            }
+        }
+    }
+
+    fun refreshRecommendation() {
+        viewModelScope.launch {
+            val patientId = recommendationRepo.currentPatientId.first()
+            loadRecommendation(patientId)
+        }
+    }
+
+    private suspend fun loadRecommendation(patientId: String?) {
+        _recommendationState.value = _recommendationState.value.copy(isLoading = true, error = null)
+        val result = recommendationRepo.fetchNextGameRecommendation(patientId)
+        result.onSuccess { response ->
+            val domain = response.nextGame
+            _recommendationState.value = RecommendationUiState(
+                isLoading = false,
+                recommendedDomain = domain,
+                recommendedGameTitle = DomainGameMapper.getGameTitle(domain),
+                recommendedRoute = DomainGameMapper.getGameRoute(domain),
+                sessionsCompleted = response.sessionsCompleted,
+                lastGame = response.lastGame,
+                error = null
+            )
+        }.onFailure { err ->
+            _recommendationState.value = RecommendationUiState(
+                isLoading = false,
+                recommendedDomain = "memory",
+                recommendedGameTitle = DomainGameMapper.getGameTitle("memory"),
+                recommendedRoute = DomainGameMapper.getGameRoute("memory"),
+                error = err.message ?: "Recommendation unavailable"
+            )
         }
     }
 
