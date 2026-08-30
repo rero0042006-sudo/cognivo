@@ -23,13 +23,22 @@ class MainActivity : ComponentActivity() {
         setContent {
             val settingsRepo = remember { GameSettingsRepository(applicationContext) }
             val uiMode by settingsRepo.uiMode.collectAsStateWithLifecycle(initialValue = UiMode.DEFAULT)
+            val appLanguage by settingsRepo.appLanguage.collectAsStateWithLifecycle(initialValue = "en")
 
-            MemoryMomentsTheme(uiMode = uiMode) {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MmTheme.colors.background
-                ) {
-                    AppNavHost()
+            val localizedContext = remember(appLanguage) {
+                com.memorymoments.app.utils.AppLanguageManager.applyLocale(applicationContext, appLanguage)
+            }
+
+            androidx.compose.runtime.CompositionLocalProvider(
+                androidx.compose.ui.platform.LocalContext provides localizedContext
+            ) {
+                MemoryMomentsTheme(uiMode = uiMode) {
+                    Surface(
+                        modifier = Modifier.fillMaxSize(),
+                        color = MmTheme.colors.background
+                    ) {
+                        AppNavHost()
+                    }
                 }
             }
         }

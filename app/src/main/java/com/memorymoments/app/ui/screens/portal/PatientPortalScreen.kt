@@ -266,49 +266,49 @@ private fun PatientPortalBottomBar(
         ) {
             // 1. Home
             BottomNavItem(
-                title = "Home",
+                title = androidx.compose.ui.res.stringResource(com.memorymoments.app.R.string.nav_home),
                 icon = Icons.Filled.Home,
                 isSelected = selectedTab == 0,
                 onClick = { onSelectTab(0) }
             )
             // 2. Games
             BottomNavItem(
-                title = "Games",
+                title = androidx.compose.ui.res.stringResource(com.memorymoments.app.R.string.nav_games),
                 icon = Icons.Filled.SportsEsports,
                 isSelected = false,
                 onClick = onGames
             )
             // 3. Memories
             BottomNavItem(
-                title = "Memories",
+                title = androidx.compose.ui.res.stringResource(com.memorymoments.app.R.string.nav_memories),
                 icon = Icons.Filled.PhotoLibrary,
                 isSelected = false,
                 onClick = onMemories
             )
             // 4. Family
             BottomNavItem(
-                title = "Family",
+                title = androidx.compose.ui.res.stringResource(com.memorymoments.app.R.string.nav_family),
                 icon = Icons.Filled.Groups,
                 isSelected = false,
                 onClick = onFamily
             )
             // 5. Progress
             BottomNavItem(
-                title = "Progress",
+                title = androidx.compose.ui.res.stringResource(com.memorymoments.app.R.string.nav_progress),
                 icon = Icons.Filled.AutoGraph,
                 isSelected = selectedTab == 1,
                 onClick = { onSelectTab(1) }
             )
             // 6. Reminders
             BottomNavItem(
-                title = "Reminders",
+                title = androidx.compose.ui.res.stringResource(com.memorymoments.app.R.string.nav_reminders),
                 icon = Icons.Filled.Alarm,
                 isSelected = selectedTab == 2,
                 onClick = { onSelectTab(2) }
             )
             // 7. Profile
             BottomNavItem(
-                title = "Profile",
+                title = androidx.compose.ui.res.stringResource(com.memorymoments.app.R.string.nav_profile),
                 icon = Icons.Filled.Person,
                 isSelected = selectedTab == 3,
                 onClick = { onSelectTab(3) }
