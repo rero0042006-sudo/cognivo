@@ -168,9 +168,9 @@ fun FamilyGalleryContent(
 
     pendingDelete?.let { member ->
         RetroConfirmDialog(
-            title = "REMOVE ${member.name.uppercase()}?",
-            message = "This will remove ${member.name} from your family memories and games.",
-            confirmLabel = "REMOVE",
+            title = stringResource(R.string.family_delete_title, member.name),
+            message = stringResource(R.string.family_delete_message, member.name),
+            confirmLabel = stringResource(R.string.btn_delete),
             onConfirm = onConfirmDelete,
             onCancel = onCancelDelete
         )

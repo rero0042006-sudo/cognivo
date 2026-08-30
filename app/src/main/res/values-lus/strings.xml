@@ -146,8 +146,22 @@
     <string name="settings_game_mode_title">🎮 GAME MODE</string>
 
     <!-- Errors & States -->
-    <string name="state_loading">Bawhzui mek...</string>
-    <string name="state_error_network">Network harsatna. Khawngaihin thap hlething rawh.</string>
-    <string name="state_recommendation_unavailable">Hriattirna a awm rih lo.</string>
+    <string name="state_loading">A thawk mek...</string>
+    <string name="state_error_network">Network a fel lo. Khawngaihin ti nawn leh rawh.</string>
+    <string name="state_recommendation_unavailable">A thurawn a awm rih lo.</string>
     <string name="state_no_data">Data a awm lo.</string>
+
+    <!-- Additional Dialog & Button Strings -->
+    <string name="family_delete_title">%1$s NAIH REHM NAWM EMP AW?</string>
+    <string name="family_delete_message">Hei hian %1$s chu chhungkaw hriatrengna leh infiamna aṭangin a nuai bo ang.</string>
+    <string name="btn_delete">PAIHNCHHIAH</string>
+    <string name="reminders_upcoming_section">VUTIN TIKHAWPAH HRIATRENGNA LOH AWNG</string>
+    <string name="reminders_completed_section">PEIH CHHIAH HRIATRENGNA REKUT</string>
+    <string name="reminders_all_done">Tunah rih chuan hriattirna zawng zawng a zawh fel vek tawh! A va lawmawm em ❤️</string>
+    <string name="btn_call_emergency">📞 EMERGENCY BEISHAKNA CHHIAH</string>
+    <string name="btn_chat_caregiver">💬 ENKOLTU CHHAT RAWH</string>
+    <string name="btn_logout">LOG OUT / ACCOUNT INTHLAK</string>
+    <string name="weather_sample">72°F Boruak nuam</string>
+    <string name="preview_elder_view">👁️ KAWNGPUITA TE THLIRNA PREVIEW</string>
+    <string name="btn_exit_preview">PREVIEW ATANGIN CHHUAK RAWH</string>
 </resources>

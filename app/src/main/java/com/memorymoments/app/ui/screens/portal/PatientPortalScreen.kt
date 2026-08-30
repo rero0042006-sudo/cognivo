@@ -614,20 +614,20 @@ private fun PatientRemindersTab(
                         horizontalArrangement = Arrangement.spacedBy(4.dp)
                     ) {
                         Icon(imageVector = Icons.Filled.Add, contentDescription = null, tint = colors.reward, modifier = Modifier.size(16.dp))
-                        Text(text = "ADD REMINDER", style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold), color = colors.reward)
+                        Text(text = androidx.compose.ui.res.stringResource(com.memorymoments.app.R.string.reminders_add_button), style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold), color = colors.reward)
                     }
                 }
             }
 
             Text(
-                text = "Keep track of your medicine, hydration, and daily activities easily.",
+                text = androidx.compose.ui.res.stringResource(com.memorymoments.app.R.string.reminders_subtitle),
                 style = MaterialTheme.typography.bodyMedium,
                 color = colors.textMuted
             )
 
             // Upcoming / Due Reminders
             Text(
-                text = "UPCOMING & DUE TODAY",
+                text = androidx.compose.ui.res.stringResource(com.memorymoments.app.R.string.reminders_upcoming_section),
                 style = MmTheme.arcade.label,
                 color = colors.secondary
             )
@@ -636,7 +636,7 @@ private fun PatientRemindersTab(
                 RetroPanel(borderColor = colors.reward) {
                     Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                         Icon(imageVector = Icons.Filled.CheckCircle, contentDescription = null, tint = colors.reward, modifier = Modifier.size(28.dp))
-                        Text(text = "All reminders completed for now! Great job ❤️", style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold), color = colors.text)
+                        Text(text = androidx.compose.ui.res.stringResource(com.memorymoments.app.R.string.reminders_all_done), style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold), color = colors.text)
                     }
                 }
             } else {
@@ -651,7 +651,7 @@ private fun PatientRemindersTab(
 
             // Completed History
             Text(
-                text = "COMPLETED REMINDERS RECORD",
+                text = androidx.compose.ui.res.stringResource(com.memorymoments.app.R.string.reminders_completed_section),
                 style = MmTheme.arcade.label,
                 color = colors.secondary
             )
@@ -898,7 +898,7 @@ private fun PatientProfileTab(
 
                     if (contactPhone != "Not set" && contactPhone.isNotBlank()) {
                         RetroButton(
-                            text = "📞 CALL EMERGENCY CONTACT",
+                            text = androidx.compose.ui.res.stringResource(com.memorymoments.app.R.string.btn_call_emergency),
                             icon = Icons.Filled.Call,
                             onClick = {
                                 val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$contactPhone"))
@@ -920,7 +920,7 @@ private fun PatientProfileTab(
             ) {
                 Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     Text(
-                        text = "CONNECTED CAREGIVER",
+                        text = androidx.compose.ui.res.stringResource(com.memorymoments.app.R.string.profile_caregiver_info).uppercase(),
                         style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                         color = colors.text
                     )
@@ -931,7 +931,7 @@ private fun PatientProfileTab(
                     )
 
                     RetroButton(
-                        text = "💬 CHAT WITH CAREGIVER",
+                        text = androidx.compose.ui.res.stringResource(com.memorymoments.app.R.string.btn_chat_caregiver),
                         icon = Icons.AutoMirrored.Filled.Chat,
                         onClick = onOpenChat,
                         style = RetroButtonStyle.Secondary,
@@ -942,7 +942,7 @@ private fun PatientProfileTab(
 
             // Log Out Button
             RetroButton(
-                text = "LOG OUT / SWITCH ACCOUNT",
+                text = androidx.compose.ui.res.stringResource(com.memorymoments.app.R.string.btn_logout),
                 icon = Icons.AutoMirrored.Filled.Logout,
                 onClick = onLogout,
                 style = RetroButtonStyle.Ghost,

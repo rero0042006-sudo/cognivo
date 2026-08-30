@@ -146,8 +146,22 @@
     <string name="settings_game_mode_title">🎮 শান্নবগী মোড</string>
 
     <!-- Errors & States -->
-    <string name="state_loading">লোদিং চত্থরি...</string>
-    <string name="state_error_network">নেটৱার্ক অসোয়বা। অমুক হোৎনবিয়ু।</string>
-    <string name="state_recommendation_unavailable">পাউতাক হৌজিক ফংদ্রি।</string>
-    <string name="state_no_data">পাওদাম লৈত্ৰি।</string>
+    <string name="state_loading">লোদিং তৌরি...</string>
+    <string name="state_error_network">নেতৱার্ক সোইরে। অমুক হন্না হোৎনবিয়ু।</string>
+    <string name="state_recommendation_unavailable">রিকোমেন্দেসন ফংদ্রি।</string>
+    <string name="state_no_data">দেতা লৈতে।</string>
+
+    <!-- Additional Dialog & Button Strings -->
+    <string name="family_delete_title">%1$s লৌথোকগবা?</string>
+    <string name="family_delete_message">মসিনা নহারোল অমসুং শান্ননবগী মনুংদগী %1$s লৌথোক্লগনি।</string>
+    <string name="btn_delete">লৌথোকপু</string>
+    <string name="reminders_upcoming_section">ঙসিগী লাকদবা নিংশিংহল্লকপশিং</string>
+    <string name="reminders_completed_section">লোইখ্রবা নিংশিংহল্লকপগী রেকোর্দ</string>
+    <string name="reminders_all_done">হৌজিকফাওবগী নিংশিংহল্লকপশিং লোইরে! য়াম্না ফরে ❤️</string>
+    <string name="btn_call_emergency">📞 ইমার্জেন্সী কনতেক্ততা কোল তৌবিয়ু</string>
+    <string name="btn_chat_caregiver">💬 কিয়রগিবরগা ৱারী শানবিয়ু</string>
+    <string name="btn_logout">লোগ আউৎ / একাউন্ত ওনবিয়ু</string>
+    <string name="weather_sample">72°F নুংাইবা নুংশিৎ</string>
+    <string name="preview_elder_view">👁️ অহলগী মমি প্রিভিউ</string>
+    <string name="btn_exit_preview">প্রিভিউ থাদোকবিয়ু</string>
 </resources>

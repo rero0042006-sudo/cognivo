@@ -147,7 +147,21 @@
 
     <!-- Errors & States -->
     <string name="state_loading">লোড হচ্ছে...</string>
-    <string name="state_error_network">নেটওয়ার্ক সমস্যা। আবার চেষ্টা করুন।</string>
-    <string name="state_recommendation_unavailable">পরামর্শ বর্তমানে উপলব্ধ নেই।</string>
-    <string name="state_no_data">কোনো তথ্য উপলব্ধ নেই।</string>
+    <string name="state_error_network">নেটওয়ার্ক সংযোগ ত্রুটি। আবার চেষ্টা করুন।</string>
+    <string name="state_recommendation_unavailable">সুপারিশ বর্তমানে পাওয়া যাচ্ছে না।</string>
+    <string name="state_no_data">কোনো তথ্য পাওয়া যায়নি।</string>
+
+    <!-- Additional Dialog & Button Strings -->
+    <string name="family_delete_title">%1$s কে মুছবেন?</string>
+    <string name="family_delete_message">এটি আপনার পরিবারের স্মৃতি এবং খেলা থেকে %1$s কে মুছে ফেলবে।</string>
+    <string name="btn_delete">মুছুন</string>
+    <string name="reminders_upcoming_section">আজকের আগামী রিমাইন্ডার</string>
+    <string name="reminders_completed_section">সম্পূর্ণ হওয়া রিমাইন্ডার রেকর্ড</string>
+    <string name="reminders_all_done">আপাতত সব রিমাইন্ডার সম্পন্ন হয়েছে! চমৎকার ❤️</string>
+    <string name="btn_call_emergency">📞 জরুরি পরিচিতিকে কল করুন</string>
+    <string name="btn_chat_caregiver">💬 কেয়ারগিভারের সাথে চ্যাট করুন</string>
+    <string name="btn_logout">লগ আউট / অ্যাকাউন্ট পরিবর্তন করুন</string>
+    <string name="weather_sample">72°F মনোরম</string>
+    <string name="preview_elder_view">👁️ প্রবীণ দৃশ্য পূর্বরূপ</string>
+    <string name="btn_exit_preview">পূর্বরূপ থেকে বের হন</string>
 </resources>

@@ -146,8 +146,22 @@
     <string name="settings_game_mode_title">🎮 খেল মোড</string>
 
     <!-- Errors & States -->
-    <string name="state_loading">লোড হৈ আছে...</string>
-    <string name="state_error_network">নেটৱৰ্ক ক্ৰুটি। পুনৰ চেষ্টা কৰক।</string>
-    <string name="state_recommendation_unavailable">উপদেশ এতিয়া উপলব্ধ নহয়।</string>
-    <string name="state_no_data">কোনো তথ্য উপলব্ধ নাই।</string>
+    <string name="state_loading">ল’ড হৈ আছে...</string>
+    <string name="state_error_network">নেটৱৰ্ক সংযোগ ক্ৰুটি। পুনৰ চেষ্টা কৰক।</string>
+    <string name="state_recommendation_unavailable">পৰামৰ্শ বৰ্তমান উপলব্ধ নহয়।</string>
+    <string name="state_no_data">কোনো তথ্য উপলব্ধ নহয়।</string>
+
+    <!-- Additional Dialog & Button Strings -->
+    <string name="family_delete_title">%1$s ক আতৰাব বিচাৰে নেকি?</string>
+    <string name="family_delete_message">ই %1$s ক আপোনাৰ পৰিয়ালৰ স্মৃতি আৰু খেলৰ পৰা আতৰাব।</string>
+    <string name="btn_delete">আতৰাওক</string>
+    <string name="reminders_upcoming_section">আজিৰ আগন্তুক মনত পেলোৱা সূচী</string>
+    <string name="reminders_completed_section">সম্পূৰ্ণ হোৱা সূচীৰ ৰেকৰ্ড</string>
+    <string name="reminders_all_done">বৰ্তমানৰ বাবে সকলো মনত পেলোৱা কাম সম্পূৰ্ণ হৈছে! বহুত ভাল ❤️</string>
+    <string name="btn_call_emergency">📞 জৰুৰীকালীন যোগাযোগলৈ ফোন কৰক</string>
+    <string name="btn_chat_caregiver">💬 যত্নলওঁতাৰ সৈতে কথা পাতক</string>
+    <string name="btn_logout">লগ আউট / একাউণ্ট সলনি কৰক</string>
+    <string name="weather_sample">72°F মনৰম</string>
+    <string name="preview_elder_view">👁️ বয়োজ্যেষ্ঠ দৃশ্য প্ৰাকদৰ্শন</string>
+    <string name="btn_exit_preview">প্ৰাকদৰ্শনৰ পৰা ওলাই যাওক</string>
 </resources>

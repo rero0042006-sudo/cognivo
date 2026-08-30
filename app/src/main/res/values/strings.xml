@@ -150,4 +150,18 @@
     <string name="state_error_network">Network connection error. Please try again.</string>
     <string name="state_recommendation_unavailable">Recommendation unavailable right now.</string>
     <string name="state_no_data">No data available.</string>
+
+    <!-- Additional Dialog & Button Strings -->
+    <string name="family_delete_title">REMOVE %1$s?</string>
+    <string name="family_delete_message">This will remove %1$s from your family memories and games.</string>
+    <string name="btn_delete">REMOVE</string>
+    <string name="reminders_upcoming_section">UPCOMING &amp; DUE TODAY</string>
+    <string name="reminders_completed_section">COMPLETED REMINDERS RECORD</string>
+    <string name="reminders_all_done">All reminders completed for now! Great job ❤️</string>
+    <string name="btn_call_emergency">📞 CALL EMERGENCY CONTACT</string>
+    <string name="btn_chat_caregiver">💬 CHAT WITH CAREGIVER</string>
+    <string name="btn_logout">LOG OUT / SWITCH ACCOUNT</string>
+    <string name="weather_sample">72°F Pleasant</string>
+    <string name="preview_elder_view">👁️ PREVIEWING ELDER VIEW</string>
+    <string name="btn_exit_preview">EXIT PREVIEW</string>
 </resources>

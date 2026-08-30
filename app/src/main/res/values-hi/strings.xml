@@ -147,7 +147,21 @@
 
     <!-- Errors & States -->
     <string name="state_loading">लोड हो रहा है...</string>
-    <string name="state_error_network">नेटवर्क त्रुटि। कृपया पुनः प्रयास करें।</string>
-    <string name="state_recommendation_unavailable">सुझाव अभी उपलब्ध नहीं है।</string>
+    <string name="state_error_network">नेटवर्क कनेक्शन त्रुटि। कृपया पुनः प्रयास करें।</string>
+    <string name="state_recommendation_unavailable">अनुशंसा अभी उपलब्ध नहीं है।</string>
     <string name="state_no_data">कोई डेटा उपलब्ध नहीं है।</string>
+
+    <!-- Additional Dialog & Button Strings -->
+    <string name="family_delete_title">%1$s को हटाएं?</string>
+    <string name="family_delete_message">यह %1$s को आपकी पारिवारिक यादों और खेलों से हटा देगा।</string>
+    <string name="btn_delete">हटाएं</string>
+    <string name="reminders_upcoming_section">आज के आगामी रिमाइंडर्स</string>
+    <string name="reminders_completed_section">पूरे किए गए रिमाइंडर्स</string>
+    <string name="reminders_all_done">अभी के लिए सभी रिमाइंडर्स पूरे हो चुके हैं! बहुत बढ़िया ❤️</string>
+    <string name="btn_call_emergency">📞 आपातकालीन संपर्क को कॉल करें</string>
+    <string name="btn_chat_caregiver">💬 केयरगिवर से चैट करें</string>
+    <string name="btn_logout">लॉग आउट / खाता बदलें</string>
+    <string name="weather_sample">72°F सुहावना</string>
+    <string name="preview_elder_view">👁️ बुजुर्ग दृश्य पूर्वावलोकन</string>
+    <string name="btn_exit_preview">पूर्वावलोकन से बाहर निकलें</string>
 </resources>

@@ -261,7 +261,7 @@ private fun StitchHomeContent(
                             modifier = Modifier.size(20.dp)
                         )
                         Text(
-                            text = "MORE",
+                            text = stringResource(R.string.nav_more),
                             style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold),
                             color = colors.primary
                         )
@@ -319,7 +319,7 @@ private fun StitchHomeContent(
                             modifier = Modifier.size(18.dp)
                         )
                         Text(
-                            text = "CARE CHAT",
+                            text = stringResource(R.string.care_chat_title),
                             style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
                             color = colors.onPrimaryContainer
                         )
@@ -345,12 +345,12 @@ private fun StitchHomeContent(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(
-                            text = "👁️ PREVIEWING ELDER VIEW",
+                            text = stringResource(R.string.preview_elder_view),
                             style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold),
                             color = colors.onSecondaryContainer
                         )
                         RetroButton(
-                            text = "EXIT PREVIEW",
+                            text = stringResource(R.string.btn_exit_preview),
                             onClick = onExitPreview,
                             style = RetroButtonStyle.Primary,
                             minHeight = 36.dp
@@ -404,7 +404,7 @@ private fun StitchHomeContent(
                             modifier = Modifier.size(18.dp)
                         )
                         Text(
-                            text = "72°F Pleasant",
+                            text = stringResource(R.string.weather_sample),
                             style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Medium),
                             color = colors.textMuted
                         )
@@ -766,7 +766,7 @@ private fun StitchJourneyCard(
             ) {
                 // Morning Node
                 JourneyNode(
-                    label = "Morning",
+                    label = stringResource(R.string.home_journey_morning),
                     time = "8:00 AM",
                     active = true,
                     completed = completedActivities.isNotEmpty(),
@@ -789,7 +789,7 @@ private fun StitchJourneyCard(
 
                 // Noon Node
                 JourneyNode(
-                    label = "Noon",
+                    label = stringResource(R.string.home_journey_noon),
                     time = "12:00 PM",
                     active = completedActivities.isNotEmpty(),
                     completed = completedActivities.size >= 2,
@@ -812,7 +812,7 @@ private fun StitchJourneyCard(
 
                 // Evening Node
                 JourneyNode(
-                    label = "Evening",
+                    label = stringResource(R.string.home_journey_evening),
                     time = "6:00 PM",
                     active = completedActivities.size >= 2,
                     completed = completedActivities.size >= 3,

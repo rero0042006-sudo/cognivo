@@ -146,8 +146,22 @@
     <string name="settings_game_mode_title">🎮 MODE JINGIALEH</string>
 
     <!-- Errors & States -->
-    <string name="state_loading">Dang pynbiang...</string>
-    <string name="state_error_network">Jingthut Network. Sngewbha tynjuh biang.</string>
-    <string name="state_recommendation_unavailable">Jingai jingmut ymdon mynta.</string>
-    <string name="state_no_data">Ym don data.</string>
+    <string name="state_loading">Dang load...</string>
+    <string name="state_error_network">Jingthut ka network. Sngewbha pyrshang biang.</string>
+    <string name="state_recommendation_unavailable">Jingbthah ym don ba shna tad haduh mynta.</string>
+    <string name="state_no_data">Ym don kynja data.</string>
+
+    <!-- Additional Dialog & Button Strings -->
+    <string name="family_delete_title">PYNDUH KI %1$s?</string>
+    <string name="family_delete_message">Kane kan weng ya i %1$s na ki kynmaw ing da ki jinglehkai.</string>
+    <string name="btn_delete">WENG</string>
+    <string name="reminders_upcoming_section">KIBA DANG AP MYNTA KA SNGI</string>
+    <string name="reminders_completed_section">JINGKYNMAW KIBA DA DEP</string>
+    <string name="reminders_all_done">Baroh ki jingkynmaw da dep shwa tad haduh mynta! Khublei Shibun ❤️</string>
+    <string name="btn_call_emergency">📞 PHONE SHI PYRSHANG EMERGENCY</string>
+    <string name="btn_chat_caregiver">💬 YAKLAM BAD I CAREGIVER</string>
+    <string name="btn_logout">LOG OUT / KYLLA ACCOUNT</string>
+    <string name="weather_sample">72°F Suk Ka Suinbneng</string>
+    <string name="preview_elder_view">👁️ JINGPEIT PEIT PYRKHAT TIM</string>
+    <string name="btn_exit_preview">MIH NA KA PREVIEW</string>
 </resources>
